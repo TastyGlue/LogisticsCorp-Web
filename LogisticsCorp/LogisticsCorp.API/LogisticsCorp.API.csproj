@@ -4,6 +4,9 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>0fbbe49e-4b74-4519-8995-313a3f00e5cf</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -29,6 +32,10 @@
 	<ItemGroup>
 		<ProjectReference Include="..\LogisticsCorp.Data\LogisticsCorp.Data.csproj" />
 		<ProjectReference Include="..\LogisticsCorp.Shared\LogisticsCorp.Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="..\.dockerignore" />
 	</ItemGroup>
 
 </Project>

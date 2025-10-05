@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "logisticscorp.web",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
+      "serviceActions": {
+        "logisticscorp.api": "StartDebugging",
+        "logisticscorp.db": "StartWithoutDebugging",
+        "logisticscorp.web": "StartDebugging"
+      }
+    }
+  }
+}

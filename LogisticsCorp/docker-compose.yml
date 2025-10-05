@@ -1,0 +1,47 @@
+services:
+  logisticscorp.api:
+    container_name: logisticscorp.api
+    image: ${DOCKER_REGISTRY-}logisticscorpapi
+    build:
+      context: .
+      dockerfile: LogisticsCorp.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "12501:443"
+      - "12301:80"
+
+  logisticscorp.web:
+    container_name: logisticscorp.web
+    image: ${DOCKER_REGISTRY-}logisticscorpweb
+    build:
+      context: .
+      dockerfile: LogisticsCorp.Web/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "12502:443"
+      - "12302:80"
+    depends_on:
+      logisticscorp.api:
+        condition: service_started
+    volumes:
+      - ./dataprotection-keys:/keys
+
+  logisticscorp.db:
+    container_name: logisticscorp.db
+    image: postgres:alpine
+    ports:
+      - "15742:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=LogisticsCorp
+    volumes:
+      - logisticscorp.db-data:/var/lib/postgresql/data
+
+volumes:
+  logisticscorp.db-data:
+  dataprotection-keys:  
