@@ -4,10 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36109.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.API", "LogisticsCorp.API\LogisticsCorp.API.csproj", "{BBD6D524-C589-4782-921E-38DA94054246}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45943D01-4DFC-416A-8AEE-D52F474EC179} = {45943D01-4DFC-416A-8AEE-D52F474EC179}
+		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Web", "LogisticsCorp.Web\LogisticsCorp.Web.csproj", "{C844E280-2B91-4AC5-BA8A-ABDBC4E89787}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Data", "LogisticsCorp.Data\LogisticsCorp.Data.csproj", "{45943D01-4DFC-416A-8AEE-D52F474EC179}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Shared", "..\LogisticsCorp.Shared\LogisticsCorp.Shared.csproj", "{B23844EE-7440-4B19-A118-82E37639D9A3}"
 EndProject
