@@ -6,20 +6,20 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.API", "LogisticsCorp.API\LogisticsCorp.API.csproj", "{BBD6D524-C589-4782-921E-38DA94054246}"
 	ProjectSection(ProjectDependencies) = postProject
 		{45943D01-4DFC-416A-8AEE-D52F474EC179} = {45943D01-4DFC-416A-8AEE-D52F474EC179}
-		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7} = {E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Web", "LogisticsCorp.Web\LogisticsCorp.Web.csproj", "{C844E280-2B91-4AC5-BA8A-ABDBC4E89787}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7} = {E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Data", "LogisticsCorp.Data\LogisticsCorp.Data.csproj", "{45943D01-4DFC-416A-8AEE-D52F474EC179}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B23844EE-7440-4B19-A118-82E37639D9A3} = {B23844EE-7440-4B19-A118-82E37639D9A3}
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7} = {E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Shared", "..\LogisticsCorp.Shared\LogisticsCorp.Shared.csproj", "{B23844EE-7440-4B19-A118-82E37639D9A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogisticsCorp.Shared", "LogisticsCorp.Shared\LogisticsCorp.Shared.csproj", "{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,10 @@ Global
 		{45943D01-4DFC-416A-8AEE-D52F474EC179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45943D01-4DFC-416A-8AEE-D52F474EC179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45943D01-4DFC-416A-8AEE-D52F474EC179}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B23844EE-7440-4B19-A118-82E37639D9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B23844EE-7440-4B19-A118-82E37639D9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B23844EE-7440-4B19-A118-82E37639D9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B23844EE-7440-4B19-A118-82E37639D9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57DBFBB-E307-7DA8-D08E-EF47753B8EC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
