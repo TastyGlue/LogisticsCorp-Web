@@ -5,5 +5,5 @@ global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 //global using LogisticsCorp.Shared.Enums;
 //global using LogisticsCorp.Data.Models;
 //global using LogisticsCorp.Data.Extensions;
-//global using LogisticsCorp.Shared.Constants;
+global using LogisticsCorp.Shared.Constants;
 //global using LogisticsCorp.Data.Interfaces;
