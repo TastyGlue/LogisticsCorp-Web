@@ -1,0 +1,47 @@
+﻿using LogisticsCorp.API.Handlers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+namespace LogisticsCorp.API.Extensions;
+
+public static class ServiceCollectionExtensions
+{
+    public static IServiceCollection RegisterLogisticsCorpServices(this IServiceCollection services, WebApplicationBuilder builder)
+    {
+        builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
+        {
+            options.SignIn.RequireConfirmedAccount = false;
+            options.SignIn.RequireConfirmedEmail = false;
+            options.Lockout.MaxFailedAccessAttempts = 0;
+            options.Password.RequiredLength = 8;
+            options.Password.RequireNonAlphanumeric = false;
+            options.User.RequireUniqueEmail = true;
+        })
+            .AddRoles<IdentityRole<Guid>>()
+            .AddEntityFrameworkStores<LogisticsCorpDbContext>()
+            .AddDefaultTokenProviders();
+
+        builder.Services.AddDbContext<LogisticsCorpDbContext>(options =>
+        {
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
+
+        builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, CustomAuthorizationMiddlewareResultHandler>();
+
+        return services;
+    }
+
+    private static readonly JwtBearerEvents CustomAuthFailureEvent = new()
+    {
+        OnChallenge = context =>
+        {
+            context.HandleResponse();
+
+            context.Response.StatusCode = 401;
+            context.Response.ContentType = "application/json";
+
+            var response = new ErrorResult("Request is not authenticated", ErrorCodes.ACCESS_NOT_AUTHENTICATED);
+
+            return context.Response.WriteAsync(JsonSerializer.Serialize(response));
+        }
+    };
+}
