@@ -1,12 +1,26 @@
 ﻿namespace LogisticsCorp.Data.Models;
 
-public class User : IdentityUser<Guid>
+[Index(nameof(EmployeeId), IsUnique = true)]
+[Index(nameof(ClientId), IsUnique = true)]
+public class User : IdentityUser<Guid>, IAuditedEntity
 {
     public string FullName { get; set; } = default!;
 
-    public string? Address { get; set; }
-
     public bool IsActive { get; set; }
+
+    public Guid? EmployeeId { get; set; }
+
+    public Guid? ClientId { get; set; }
+
+    public DateTime CreatedOn { get; set; }
+    public DateTime? ModifiedOn { get; set; }
+
+    // Navigation properties
+    [ForeignKey(nameof(EmployeeId))]
+    public Employee? Employee { get; set; }
+
+    [ForeignKey(nameof(ClientId))]
+    public Client? Client { get; set; }
 
     public ICollection<IdentityRole<Guid>> Roles { get; set; } = [];
 }
