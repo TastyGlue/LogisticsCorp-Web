@@ -33,6 +33,6 @@ public class Employee : IAuditedEntity
     public Office? Office { get; set; }
 
     public ICollection<Shipment> RegisteredShipments { get; set; } = [];
-    public ICollection<Shipment> DeliveredShipments { get; set; } = [];
+    public ICollection<Shipment> AssignedShipments { get; set; } = [];
     public ICollection<ShipmentHistory> ShipmentHistoryEntries { get; set; } = [];
 }

@@ -16,10 +16,8 @@ public class User : IdentityUser<Guid>, IAuditedEntity
     public DateTime? ModifiedOn { get; set; }
 
     // Navigation properties
-    [ForeignKey(nameof(EmployeeId))]
     public Employee? Employee { get; set; }
 
-    [ForeignKey(nameof(ClientId))]
     public Client? Client { get; set; }
 
     public ICollection<IdentityRole<Guid>> Roles { get; set; } = [];
