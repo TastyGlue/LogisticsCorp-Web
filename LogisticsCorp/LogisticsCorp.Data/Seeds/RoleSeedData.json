@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "A8D2C4E2-1F3B-4D5E-9A6B-7C8D9E0F1A2B",
+    "Name": "EMPLOYEE",
+    "NormalizedName": "EMPLOYEE"
+  },
+  {
+    "Id": "B1C2D3E4-5F6A-7B8C-9D0E-1F2A3B4C5D6E",
+    "Name": "CLIENT",
+    "NormalizedName": "CLIENT"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "C1D2E3F4-5A6B-7C8D-9E0F-1A2B3C4D5E6F",
+    "Username": "jack.martin@example.com",
+    "Email": "jack.martin@example.com",
+    "FullName": "Jack Martin",
+    "IsActive": true,
+    "EmailConfirmed": true
+  }
+]

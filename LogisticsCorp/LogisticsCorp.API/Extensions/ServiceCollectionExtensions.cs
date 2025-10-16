@@ -25,7 +25,17 @@ public static class ServiceCollectionExtensions
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
+        builder.Services.AddDataSeeders();
+
         builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, CustomAuthorizationMiddlewareResultHandler>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddDataSeeders(this IServiceCollection services)
+    {
+        services.AddTransient<IDataSeeder, RoleSeeder>();
+        services.AddTransient<IDataSeeder, UserSeeder>();
 
         return services;
     }
