@@ -16,7 +16,7 @@ global using LogisticsCorp.API.Interfaces;
 global using LogisticsCorp.API.Services;
 global using LogisticsCorp.API.Factories;
 global using LogisticsCorp.Shared;
-//global using LogisticsCorp.Shared.Enums;
+global using LogisticsCorp.Shared.Enums;
 global using LogisticsCorp.Shared.Constants;
 global using LogisticsCorp.Shared.Models;
 //global using LogisticsCorp.Shared.Exceptions;

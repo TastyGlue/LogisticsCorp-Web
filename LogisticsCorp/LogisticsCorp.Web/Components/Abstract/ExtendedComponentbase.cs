@@ -2,7 +2,6 @@
 
 public class ExtendedComponentBase : ComponentBase
 {
-    //Test Commt for commit
     [Inject] public NavigationManager NavigationManager { get; set; } = default!;
     [Inject] public ProtectedLocalStorage LocalStorage { get; set; } = default!;
     [Inject] public LoaderService LoaderService { get; set; } = default!;

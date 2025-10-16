@@ -35,4 +35,41 @@ public static class ModelBuilderExtensions
                     r => r.HasOne<User>().WithMany().HasForeignKey(ur => ur.UserId)
                 );
     }
+
+    /// <summary>
+    /// Configures the relationships between the <see cref="Shipment"/> entity and its related entities in the model.
+    /// </summary>
+    /// <param name="modelBuilder">The <see cref="ModelBuilder"/> used to configure the entity relationships.</param>
+    public static void ConfigureShipmentTableRelations(this ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Shipment>()
+            .HasOne(s => s.Sender)
+            .WithMany(c => c.SentShipments)
+            .HasForeignKey(s => s.SenderId);
+
+        modelBuilder.Entity<Shipment>()
+            .HasOne(s => s.Recipient)
+            .WithMany(c => c.ReceivedShipments)
+            .HasForeignKey(s => s.RecipientId);
+
+        modelBuilder.Entity<Shipment>()
+            .HasOne(e => e.RegisteredByEmployee)
+            .WithMany(emp => emp.RegisteredShipments)
+            .HasForeignKey(e => e.RegisteredByEmployeeId);
+
+        modelBuilder.Entity<Shipment>()
+            .HasOne(e => e.Courier)
+            .WithMany(emp => emp.AssignedShipments)
+            .HasForeignKey(e => e.CourierId);
+
+        modelBuilder.Entity<Shipment>()
+            .HasOne(s => s.OriginOffice)
+            .WithMany(o => o.ShipmentsFromThisOffice)
+            .HasForeignKey(s => s.OriginOfficeId);
+
+        modelBuilder.Entity<Shipment>()
+            .HasOne(s => s.DestinationOffice)
+            .WithMany(o => o.ShipmentsToThisOffice)
+            .HasForeignKey(s => s.DestinationOfficeId);
+    }
 }

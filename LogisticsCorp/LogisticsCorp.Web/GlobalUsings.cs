@@ -15,7 +15,7 @@ global using LogisticsCorp.Web.Services;
 //global using LogisticsCorp.Web.Components.Abstract;
 //global using LogisticsCorp.Web.Components.Shared;
 global using LogisticsCorp.Shared.Constants;
-//global using LogisticsCorp.Shared.Enums;
+global using LogisticsCorp.Shared.Enums;
 global using LogisticsCorp.Shared.Models;
 //global using LogisticsCorp.Shared.Models.DTOs;
 global using LogisticsCorp.Shared.Utils;
