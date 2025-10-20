@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "20000000-0000-0000-0000-000000000001",
+    "UserId": "B6C7D8E9-0F1A-2B3C-4D5E-6F7A8B9C0D1E",
+    "Address": "789 Maple Street",
+    "City": "New York",
+    "PostalCode": "10002",
+    "IsActive": true
+  },
+  {
+    "Id": "20000000-0000-0000-0000-000000000002",
+    "UserId": "C7D8E9F0-1A2B-3C4D-5E6F-7A8B9C0D1E2F",
+    "Address": "456 Oak Avenue",
+    "City": "Los Angeles",
+    "PostalCode": "90002",
+    "IsActive": true
+  },
+  {
+    "Id": "20000000-0000-0000-0000-000000000003",
+    "UserId": "D8E9F0A1-2B3C-4D5E-6F7A-8B9C0D1E2F3A",
+    "Address": "123 Pine Road",
+    "City": "Chicago",
+    "PostalCode": "60602",
+    "IsActive": true
+  },
+  {
+    "Id": "20000000-0000-0000-0000-000000000004",
+    "UserId": "E9F0A1B2-3C4D-5E6F-7A8B-9C0D1E2F3A4B",
+    "Address": "321 Elm Street",
+    "City": "Houston",
+    "PostalCode": "77002",
+    "IsActive": true
+  },
+  {
+    "Id": "20000000-0000-0000-0000-000000000005",
+    "UserId": "F0A1B2C3-4D5E-6F7A-8B9C-0D1E2F3A4B5C",
+    "Address": "654 Cedar Lane",
+    "City": "New York",
+    "PostalCode": "10003",
+    "IsActive": true
+  }
+]

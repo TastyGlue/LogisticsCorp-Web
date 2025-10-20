@@ -6,5 +6,77 @@
     "FullName": "Jack Martin",
     "IsActive": true,
     "EmailConfirmed": true
+  },
+  {
+    "Id": "D2E3F4A5-6B7C-8D9E-0F1A-2B3C4D5E6F7A",
+    "Username": "sarah.johnson@example.com",
+    "Email": "sarah.johnson@example.com",
+    "FullName": "Sarah Johnson",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "E3F4A5B6-7C8D-9E0F-1A2B-3C4D5E6F7A8B",
+    "Username": "michael.brown@example.com",
+    "Email": "michael.brown@example.com",
+    "FullName": "Michael Brown",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "F4A5B6C7-8D9E-0F1A-2B3C-4D5E6F7A8B9C",
+    "Username": "emily.davis@example.com",
+    "Email": "emily.davis@example.com",
+    "FullName": "Emily Davis",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "A5B6C7D8-9E0F-1A2B-3C4D-5E6F7A8B9C0D",
+    "Username": "david.wilson@example.com",
+    "Email": "david.wilson@example.com",
+    "FullName": "David Wilson",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "B6C7D8E9-0F1A-2B3C-4D5E-6F7A8B9C0D1E",
+    "Username": "jennifer.taylor@example.com",
+    "Email": "jennifer.taylor@example.com",
+    "FullName": "Jennifer Taylor",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "C7D8E9F0-1A2B-3C4D-5E6F-7A8B9C0D1E2F",
+    "Username": "robert.anderson@example.com",
+    "Email": "robert.anderson@example.com",
+    "FullName": "Robert Anderson",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "D8E9F0A1-2B3C-4D5E-6F7A-8B9C0D1E2F3A",
+    "Username": "lisa.thomas@example.com",
+    "Email": "lisa.thomas@example.com",
+    "FullName": "Lisa Thomas",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "E9F0A1B2-3C4D-5E6F-7A8B-9C0D1E2F3A4B",
+    "Username": "james.martinez@example.com",
+    "Email": "james.martinez@example.com",
+    "FullName": "James Martinez",
+    "IsActive": true,
+    "EmailConfirmed": true
+  },
+  {
+    "Id": "F0A1B2C3-4D5E-6F7A-8B9C-0D1E2F3A4B5C",
+    "Username": "amanda.garcia@example.com",
+    "Email": "amanda.garcia@example.com",
+    "FullName": "Amanda Garcia",
+    "IsActive": true,
+    "EmailConfirmed": true
   }
 ]

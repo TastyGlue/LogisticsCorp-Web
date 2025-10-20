@@ -1,4 +1,4 @@
-﻿namespace LogisticsCorp.Data.Seeders;
+﻿namespace LogisticsCorp.API.Seeders;
 
 public class UserSeeder : IDataSeeder
 {

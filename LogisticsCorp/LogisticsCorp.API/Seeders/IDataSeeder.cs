@@ -1,4 +1,4 @@
-﻿namespace LogisticsCorp.Data.Seeders;
+﻿namespace LogisticsCorp.API.Seeders;
 
 /// <summary>
 /// Defines a contract for data seeding operations.

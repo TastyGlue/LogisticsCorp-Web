@@ -21,7 +21,7 @@ public class CustomResult
 
     public ErrorResult? Error { get; set; }
 
-    public CustomResult(ErrorResult? error)
+    public CustomResult(ErrorResult? error = null)
     {
         Error = error;
     }

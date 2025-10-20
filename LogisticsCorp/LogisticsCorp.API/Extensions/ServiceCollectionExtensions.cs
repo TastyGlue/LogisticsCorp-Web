@@ -1,4 +1,5 @@
 ﻿using LogisticsCorp.API.Handlers;
+using LogisticsCorp.API.Seeders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace LogisticsCorp.API.Extensions;
@@ -25,6 +26,8 @@ public static class ServiceCollectionExtensions
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
+        builder.Services.AddApplicationServices();
+
         builder.Services.AddDataSeeders();
 
         builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, CustomAuthorizationMiddlewareResultHandler>();
@@ -36,6 +39,21 @@ public static class ServiceCollectionExtensions
     {
         services.AddTransient<IDataSeeder, RoleSeeder>();
         services.AddTransient<IDataSeeder, UserSeeder>();
+        services.AddTransient<IDataSeeder, OfficeSeeder>();
+        services.AddTransient<IDataSeeder, PricingRuleSeeder>();
+        services.AddTransient<IDataSeeder, EmployeeSeeder>();
+        services.AddTransient<IDataSeeder, ClientSeeder>();
+        services.AddTransient<IDataSeeder, ShipmentSeeder>();
+        services.AddTransient<IDataSeeder, ShipmentHistorySeeder>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IUserService, UserService>();
 
         return services;
     }

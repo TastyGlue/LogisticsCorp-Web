@@ -7,5 +7,4 @@ global using LogisticsCorp.Shared.Enums;
 global using LogisticsCorp.Data.Models;
 global using LogisticsCorp.Data.Extensions;
 global using LogisticsCorp.Shared.Constants;
-global using static LogisticsCorp.Shared.Utils.Utils;
 //global using LogisticsCorp.Data.Interfaces;
