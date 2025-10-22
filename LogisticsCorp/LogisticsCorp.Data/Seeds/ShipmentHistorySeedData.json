@@ -1,0 +1,101 @@
+[
+  {
+    "Id": "40000000-0000-0000-0000-000000000001",
+    "ShipmentId": "10000000-0000-0000-0000-000000000001",
+    "EmployeeId": "30000000-0000-0000-0000-000000000001",
+    "Status": 1,
+    "Notes": "Package registered and ready for pickup",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-15T10:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000002",
+    "ShipmentId": "10000000-0000-0000-0000-000000000001",
+    "EmployeeId": "30000000-0000-0000-0000-000000000002",
+    "Status": 2,
+    "Notes": "Package picked up by courier",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-15T14:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000003",
+    "ShipmentId": "10000000-0000-0000-0000-000000000001",
+    "EmployeeId": "30000000-0000-0000-0000-000000000002",
+    "Status": 3,
+    "Notes": "Package delivered successfully",
+    "Location": "456 Oak Avenue, Los Angeles",
+    "CreatedOn": "2024-01-16T11:30:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000004",
+    "ShipmentId": "10000000-0000-0000-0000-000000000002",
+    "EmployeeId": "30000000-0000-0000-0000-000000000003",
+    "Status": 1,
+    "Notes": "Package registered for office delivery",
+    "Location": "Westside Distribution Center",
+    "CreatedOn": "2024-01-20T09:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000005",
+    "ShipmentId": "10000000-0000-0000-0000-000000000002",
+    "EmployeeId": "30000000-0000-0000-0000-000000000004",
+    "Status": 2,
+    "Notes": "Package in transit to destination office",
+    "Location": "En route to Eastside Logistics Hub",
+    "CreatedOn": "2024-01-20T15:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000006",
+    "ShipmentId": "10000000-0000-0000-0000-000000000003",
+    "EmployeeId": "30000000-0000-0000-0000-000000000003",
+    "Status": 1,
+    "Notes": "Small parcel registered, awaiting courier assignment",
+    "Location": "Eastside Logistics Hub",
+    "CreatedOn": "2024-01-22T08:30:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000007",
+    "ShipmentId": "10000000-0000-0000-0000-000000000004",
+    "EmployeeId": "30000000-0000-0000-0000-000000000001",
+    "Status": 1,
+    "Notes": "Office supplies registered",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-18T11:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000008",
+    "ShipmentId": "10000000-0000-0000-0000-000000000004",
+    "EmployeeId": "30000000-0000-0000-0000-000000000002",
+    "Status": 2,
+    "Notes": "Package picked up for same-office delivery",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-18T16:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-000000000009",
+    "ShipmentId": "10000000-0000-0000-0000-000000000004",
+    "EmployeeId": "30000000-0000-0000-0000-000000000002",
+    "Status": 3,
+    "Notes": "Delivered to office pickup point",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-19T10:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-00000000000A",
+    "ShipmentId": "10000000-0000-0000-0000-000000000005",
+    "EmployeeId": "30000000-0000-0000-0000-000000000001",
+    "Status": 1,
+    "Notes": "Heavy furniture parts registered",
+    "Location": "Downtown Main Office",
+    "CreatedOn": "2024-01-23T07:00:00Z"
+  },
+  {
+    "Id": "40000000-0000-0000-0000-00000000000B",
+    "ShipmentId": "10000000-0000-0000-0000-000000000005",
+    "EmployeeId": "30000000-0000-0000-0000-000000000005",
+    "Status": 2,
+    "Notes": "Package picked up and in transit",
+    "Location": "En route to New York",
+    "CreatedOn": "2024-01-23T12:00:00Z"
+  }
+]

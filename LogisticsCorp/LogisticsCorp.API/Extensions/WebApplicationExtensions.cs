@@ -1,4 +1,6 @@
-﻿namespace LogisticsCorp.API.Extensions;
+﻿using LogisticsCorp.API.Seeders;
+
+namespace LogisticsCorp.API.Extensions;
 
 public static class WebApplicationExtensions
 {

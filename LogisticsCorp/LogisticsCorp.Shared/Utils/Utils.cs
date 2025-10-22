@@ -1,10 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using System.Text.Json;
 
 namespace LogisticsCorp.Shared.Utils;
 
 public static class Utils
 {
+    private static readonly JsonSerializerOptions _caseInsensitiveOptions = new() { PropertyNameCaseInsensitive = true };
+
+    public static List<T> ReadJsonDataFile<T>(string filePath) where T : class
+    {
+        filePath = Path.Combine(AppContext.BaseDirectory, filePath);
+
+        if (!File.Exists(filePath))
+            throw new FileNotFoundException($"The file '{filePath}' was not found.");
+
+        var jsonData = File.ReadAllText(filePath);
+
+        return JsonSerializer.Deserialize<List<T>>(jsonData, _caseInsensitiveOptions) 
+               ?? throw new InvalidOperationException($"Failed to deserialize data from file '{filePath}'.");
+    }
+
     public static string GetFullExceptionMessage(Exception ex)
     {
         if (ex == null) return string.Empty;

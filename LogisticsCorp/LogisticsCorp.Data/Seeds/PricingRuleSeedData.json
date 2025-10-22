@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+    "DeliveryType": 1,
+    "MinWeight": 0.0,
+    "MaxWeight": 5.0,
+    "PricePerKg": 2.50,
+    "BaseFee": 5.00,
+    "IsActive": true
+  },
+  {
+    "Id": "BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB",
+    "DeliveryType": 1,
+    "MinWeight": 5.01,
+    "MaxWeight": 20.0,
+    "PricePerKg": 2.00,
+    "BaseFee": 5.00,
+    "IsActive": true
+  },
+  {
+    "Id": "CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+    "DeliveryType": 1,
+    "MinWeight": 20.01,
+    "MaxWeight": 50.0,
+    "PricePerKg": 1.75,
+    "BaseFee": 5.00,
+    "IsActive": true
+  },
+  {
+    "Id": "DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD",
+    "DeliveryType": 1,
+    "MinWeight": 50.01,
+    "MaxWeight": 99999.0,
+    "PricePerKg": 1.50,
+    "BaseFee": 5.00,
+    "IsActive": true
+  },
+  {
+    "Id": "EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE",
+    "DeliveryType": 2,
+    "MinWeight": 0.0,
+    "MaxWeight": 5.0,
+    "PricePerKg": 3.50,
+    "BaseFee": 10.00,
+    "IsActive": true
+  },
+  {
+    "Id": "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+    "DeliveryType": 2,
+    "MinWeight": 5.01,
+    "MaxWeight": 20.0,
+    "PricePerKg": 3.00,
+    "BaseFee": 10.00,
+    "IsActive": true
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000001",
+    "DeliveryType": 2,
+    "MinWeight": 20.01,
+    "MaxWeight": 50.0,
+    "PricePerKg": 2.75,
+    "BaseFee": 10.00,
+    "IsActive": true
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000002",
+    "DeliveryType": 2,
+    "MinWeight": 50.01,
+    "MaxWeight": 99999.0,
+    "PricePerKg": 2.50,
+    "BaseFee": 10.00,
+    "IsActive": true
+  }
+]

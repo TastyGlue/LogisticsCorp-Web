@@ -17,4 +17,10 @@
 		<ProjectReference Include="..\LogisticsCorp.Shared\LogisticsCorp.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Content Include="Seeds\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 </Project>

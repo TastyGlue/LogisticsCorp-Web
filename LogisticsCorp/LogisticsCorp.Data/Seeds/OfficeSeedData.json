@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "11111111-1111-1111-1111-111111111111",
+    "Name": "Downtown Main Office",
+    "Address": "123 Main Street",
+    "City": "New York",
+    "PostalCode": "10001",
+    "PhoneNumber": "+1-555-0101",
+    "Email": "downtown@logisticscorp.com",
+    "IsActive": true
+  },
+  {
+    "Id": "22222222-2222-2222-2222-222222222222",
+    "Name": "Westside Distribution Center",
+    "Address": "456 West Avenue",
+    "City": "Los Angeles",
+    "PostalCode": "90001",
+    "PhoneNumber": "+1-555-0102",
+    "Email": "westside@logisticscorp.com",
+    "IsActive": true
+  },
+  {
+    "Id": "33333333-3333-3333-3333-333333333333",
+    "Name": "Eastside Logistics Hub",
+    "Address": "789 East Boulevard",
+    "City": "Chicago",
+    "PostalCode": "60601",
+    "PhoneNumber": "+1-555-0103",
+    "Email": "eastside@logisticscorp.com",
+    "IsActive": true
+  },
+  {
+    "Id": "44444444-4444-4444-4444-444444444444",
+    "Name": "Southern Regional Office",
+    "Address": "321 South Road",
+    "City": "Houston",
+    "PostalCode": "77001",
+    "PhoneNumber": "+1-555-0104",
+    "Email": "southern@logisticscorp.com",
+    "IsActive": true
+  }
+]
