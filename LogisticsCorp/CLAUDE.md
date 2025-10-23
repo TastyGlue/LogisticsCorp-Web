@@ -58,7 +58,10 @@ dotnet ef migrations remove --project LogisticsCorp.Data
 ### Database Seeding
 - Seeds run automatically on application startup via `app.MigrateDbAndSeedData()` in Program.cs
 - Seed data files located in `LogisticsCorp.Data/Seeds/` (JSON format)
-- Current seeders: RoleSeeder (order 1), UserSeeder (order 2)
+- Current seeders (in order): RoleSeeder (1), OfficeSeeder (2), PricingRuleSeeder (3), EmployeeSeeder (4), ClientSeeder (5), ShipmentSeeder (6), ShipmentHistorySeeder (7)
+- Employee and Client seed data include nested User objects
+- Users are created automatically when seeding Employees/Clients
+- Default password for all seeded users: P@ssw0rd (defined in `Constants.DEFAULT_PASSWORD`)
 - Default test user: jack.martin@example.com / P@ssw0rd
 
 ## Architecture & Project Structure
@@ -84,9 +87,10 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 - **Database**: PostgreSQL with Entity Framework Core 9.0
 - **DbContext**: `LogisticsCorpDbContext` extends `IdentityDbContext<User, IdentityRole<Guid>, Guid>`
 - **Key Models**:
-  - `User`: Identity user with 1:1 relationship to Employee OR Client
-  - `Employee`: Staff with EmployeeType (Courier/OfficeStaff), Office assignment
-  - `Client`: Customers with address and IsActive status
+  - `User`: Identity user with 1:1 optional relationship to Account
+  - `Account`: Base class for user profiles (TPT inheritance pattern)
+  - `Employee`: Inherits from Account - Staff with EmployeeType (Courier/OfficeStaff), Office assignment
+  - `Client`: Inherits from Account - Customers with address and IsActive status
   - `Shipment`: Core business entity with sender/recipient, delivery tracking, status
   - `ShipmentHistory`: Audit trail for shipment status changes
   - `Office`: Company locations
@@ -176,7 +180,10 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 
 - **Nullable Reference Types**: Enabled across all projects (`<Nullable>enable</Nullable>`)
 - **Delete Behavior**: All foreign keys use `DeleteBehavior.Restrict` to prevent accidental cascading deletes
-- **Unique Constraints**: User can only be linked to ONE Employee OR ONE Client (enforced by DB)
+- **TPT Inheritance**: User has optional 1:1 relationship with Account (base class). Employee and Client inherit from Account using Table-Per-Type pattern (each has its own table)
+- **Unique Constraints**:
+  - User.AccountId is unique (one account per user)
+  - Account.UserId is unique (one user per account)
 - **Role Enforcement**: Each user can have only one role (unique index on AspNetUserRoles.UserId)
 - **Validation**: Email and phone validation regex patterns in `ValidationConstants`
 - **Main Branch**: `main` (use for PRs)

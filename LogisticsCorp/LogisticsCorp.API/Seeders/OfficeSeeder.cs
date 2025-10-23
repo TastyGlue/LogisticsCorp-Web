@@ -2,7 +2,7 @@ namespace LogisticsCorp.API.Seeders;
 
 public class OfficeSeeder : IDataSeeder
 {
-    public int Order => 3;
+    public int Order => 2;
 
     public async Task Seed(DbContext context)
     {

@@ -6,7 +6,15 @@
     "EmployeeType": 2,
     "HireDate": "2023-01-15T00:00:00Z",
     "IsActive": true,
-    "Salary": 55000.00
+    "Salary": 55000.00,
+    "User": {
+      "Id": "C1D2E3F4-5A6B-7C8D-9E0F-1A2B3C4D5E6F",
+      "UserName": "jack.martin@example.com",
+      "Email": "jack.martin@example.com",
+      "FullName": "Jack Martin",
+      "IsActive": true,
+      "EmailConfirmed": true
+    }
   },
   {
     "Id": "30000000-0000-0000-0000-000000000002",
@@ -15,7 +23,15 @@
     "EmployeeType": 1,
     "HireDate": "2023-02-20T00:00:00Z",
     "IsActive": true,
-    "Salary": 45000.00
+    "Salary": 45000.00,
+    "User": {
+      "Id": "D2E3F4A5-6B7C-8D9E-0F1A-2B3C4D5E6F7A",
+      "UserName": "sarah.johnson@example.com",
+      "Email": "sarah.johnson@example.com",
+      "FullName": "Sarah Johnson",
+      "IsActive": true,
+      "EmailConfirmed": true
+    }
   },
   {
     "Id": "30000000-0000-0000-0000-000000000003",
@@ -24,7 +40,15 @@
     "EmployeeType": 2,
     "HireDate": "2023-03-10T00:00:00Z",
     "IsActive": true,
-    "Salary": 58000.00
+    "Salary": 58000.00,
+    "User": {
+      "Id": "E3F4A5B6-7C8D-9E0F-1A2B-3C4D5E6F7A8B",
+      "UserName": "michael.brown@example.com",
+      "Email": "michael.brown@example.com",
+      "FullName": "Michael Brown",
+      "IsActive": true,
+      "EmailConfirmed": true
+    }
   },
   {
     "Id": "30000000-0000-0000-0000-000000000004",
@@ -33,7 +57,15 @@
     "EmployeeType": 1,
     "HireDate": "2023-04-05T00:00:00Z",
     "IsActive": true,
-    "Salary": 47000.00
+    "Salary": 47000.00,
+    "User": {
+      "Id": "F4A5B6C7-8D9E-0F1A-2B3C-4D5E6F7A8B9C",
+      "UserName": "emily.davis@example.com",
+      "Email": "emily.davis@example.com",
+      "FullName": "Emily Davis",
+      "IsActive": true,
+      "EmailConfirmed": true
+    }
   },
   {
     "Id": "30000000-0000-0000-0000-000000000005",
@@ -42,6 +74,14 @@
     "EmployeeType": 1,
     "HireDate": "2023-05-12T00:00:00Z",
     "IsActive": true,
-    "Salary": 46000.00
+    "Salary": 46000.00,
+    "User": {
+      "Id": "A5B6C7D8-9E0F-1A2B-3C4D-5E6F7A8B9C0D",
+      "UserName": "david.wilson@example.com",
+      "Email": "david.wilson@example.com",
+      "FullName": "David Wilson",
+      "IsActive": true,
+      "EmailConfirmed": true
+    }
   }
 ]

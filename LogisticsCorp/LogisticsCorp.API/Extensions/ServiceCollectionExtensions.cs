@@ -38,7 +38,6 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddDataSeeders(this IServiceCollection services)
     {
         services.AddTransient<IDataSeeder, RoleSeeder>();
-        services.AddTransient<IDataSeeder, UserSeeder>();
         services.AddTransient<IDataSeeder, OfficeSeeder>();
         services.AddTransient<IDataSeeder, PricingRuleSeeder>();
         services.AddTransient<IDataSeeder, EmployeeSeeder>();

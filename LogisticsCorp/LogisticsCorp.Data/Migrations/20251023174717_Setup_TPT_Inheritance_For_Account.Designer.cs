@@ -3,6 +3,7 @@ using System;
 using LogisticsCorp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LogisticsCorp.Data.Migrations
 {
     [DbContext(typeof(LogisticsCorpDbContext))]
-    partial class LogisticsCorpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251023174717_Setup_TPT_Inheritance_For_Account")]
+    partial class Setup_TPT_Inheritance_For_Account
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
