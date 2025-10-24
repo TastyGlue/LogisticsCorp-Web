@@ -29,10 +29,19 @@ public class TokenService : ITokenService
         foreach (var role in user.Roles)
             claims.Add(new Claim(Claims.ROLE, role.Name!));
 
+        if (user.AccountId is null)
+        {
+            var error = new ErrorResult("User does not have an associated account", ErrorCodes.USER_NOT_AUTHENTICATED);
+            return new(error);
+        }
+
+        claims.Add(new Claim(Claims.ACCOUNT_ID, user.AccountId.ToString()!));
+
         string token = WriteToken(
             claims: claims, 
             expirationMinutes: _jwtSettings.AccessTokenExpirationMinutes,
             securityKey: _jwtSettings.SecurityKey
+
         );
 
         return new(token);

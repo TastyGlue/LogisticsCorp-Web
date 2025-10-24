@@ -13,8 +13,6 @@ public class Employee : Account
     [Required]
     public DateTime HireDate { get; set; }
 
-    public bool IsActive { get; set; }
-
     public decimal? Salary { get; set; }
 
     // Navigation properties

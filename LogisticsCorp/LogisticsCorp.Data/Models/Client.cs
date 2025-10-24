@@ -14,8 +14,6 @@ public class Client : Account
     [MaxLength(20)]
     public string PostalCode { get; set; } = default!;
 
-    public bool IsActive { get; set; }
-
     // Navigation properties
     public ICollection<Shipment> SentShipments { get; set; } = [];
     public ICollection<Shipment> ReceivedShipments { get; set; } = [];
