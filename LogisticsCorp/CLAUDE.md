@@ -76,12 +76,15 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 ### LogisticsCorp.API (Backend)
 - **Purpose**: REST API with business logic and data operations
 - **Key Services**:
-  - `AuthService`: User authentication and credential validation (LogisticsCorp.API/Services/AuthService.cs)
-  - `TokenService`: JWT token generation (LogisticsCorp.API/Services/TokenService.cs)
+  - `AuthService`: User authentication, credential validation, and token generation (LogisticsCorp.API/Services/AuthService.cs)
+  - `TokenService`: JWT access token and refresh token generation (LogisticsCorp.API/Services/TokenService.cs)
+- **Key Controllers**:
+  - `AuthController`: Authentication endpoints - POST /api/auth/login, POST /api/auth/refresh
 - **Patterns**:
   - Use `ApiResponseFactory.CreateResponse<T>(CustomResult<T>)` for all controller responses
   - Errors are centralized in `ErrorHandlingMiddleware`
   - All services registered via extension methods in `ServiceCollectionExtensions`
+  - `ITokenService` registered as Transient (stateless token generation)
 
 ### LogisticsCorp.Data (Data Layer)
 - **Database**: PostgreSQL with Entity Framework Core 9.0
@@ -95,6 +98,7 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
   - `ShipmentHistory`: Audit trail for shipment status changes
   - `Office`: Company locations
   - `PricingRule`: Weight-based pricing for deliveries
+  - `RefreshToken`: Stores refresh tokens with expiration dates for token refresh flow
 - **Audit Pattern**: Entities implementing `IAuditedEntity` get automatic CreatedOn/ModifiedOn timestamps in `SaveChangesAsync()`
 - **Relationships**: All foreign keys use `DeleteBehavior.Restrict` for data integrity
 
@@ -148,11 +152,20 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 - Show notifications with `Notify()` method
 - Control loading state with `LoaderService`
 
-### Authentication
-- JWT tokens configured in appsettings.json under `JwtSettings`
-- Claims: USER_ID, FULL_NAME, EMAIL, ROLE (see `Constants.Claims`)
-- Token expiration configurable via `AccessTokenExpirationMinutes`
-- User must have `IsActive = true` to authenticate
+### Authentication & Authorization
+- **JWT Configuration**: Tokens configured in appsettings.json under `JwtSettings`
+  - `SecurityKey`: Secret key for signing tokens
+  - `AccessTokenExpirationMinutes`: Access token lifetime (default: 60 minutes)
+  - `RefreshTokenExpirationDays`: Refresh token lifetime (default: 2 days)
+- **Claims**: USER_ID, ACCOUNT_ID, FULL_NAME, EMAIL, ROLE (see `Constants.Claims`)
+- **Token Flow**:
+  - Login returns both access token and refresh token (stored in `RefreshTokens` table)
+  - Refresh endpoint validates refresh token and generates new token pair
+  - User must have `IsActive = true` and at least one role to authenticate
+  - User must have an associated `AccountId` to receive tokens
+- **Endpoints**:
+  - POST /api/auth/login - Authenticate with credentials, returns `TokensResponse`
+  - POST /api/auth/refresh - Refresh tokens using valid refresh token
 
 ## Configuration Files
 

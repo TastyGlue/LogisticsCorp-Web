@@ -21,7 +21,6 @@ public class TokenService : ITokenService
         var claims = new List<Claim>()
         {
             new(Claims.USER_ID, user.Id.ToString()),
-            new(Claims.USER_ID, user.Id.ToString()),
             new(Claims.FULL_NAME, user.FullName),
             new(Claims.EMAIL, user.Email!)
         };
@@ -46,6 +45,9 @@ public class TokenService : ITokenService
 
         return new(token);
     }
+
+    public string GenerateRefreshToken()
+            => Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
 
     /// <summary>
     /// Generates a JSON Web Token (JWT) based on the provided claims and expiration time.

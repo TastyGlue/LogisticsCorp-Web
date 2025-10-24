@@ -2,8 +2,9 @@
 
 public static class ErrorCodes
 {
-    public const string LOGIN_CREDENTIALS = "LOGIN_120_403";
+    public const string LOGIN_CREDENTIALS = "LOGIN_120_400";
     public const string LOGIN_INACTIVE_USER = "LOGIN_160_403";
+    public const string LOGIN_FAILED = "LOGIN_170_500";
 
     public const string USER_NOT_AUTHENTICATED = "USER_100_401";
     public const string USER_UPDATE_FAILED = "USER_110_500";

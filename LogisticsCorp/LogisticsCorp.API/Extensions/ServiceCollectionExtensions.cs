@@ -26,6 +26,8 @@ public static class ServiceCollectionExtensions
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
+        builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
+
         builder.Services.AddApplicationServices();
 
         builder.Services.AddDataSeeders();
@@ -50,8 +52,9 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
+        services.AddTransient<ITokenService, TokenService>();
+
         services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserService, UserService>();
 
         return services;
