@@ -20,7 +20,7 @@ public class UserService : IUserService
 
         if (!overwriteExisting && roles.Count > 0)
             return new (new ErrorResult(
-                $"User '{userId}' already has a role assigned",
+                $"User '{user.UserName}' already has a role assigned",
                 ErrorCodes.USER_UPDATE_FAILED
             ));
 
@@ -29,7 +29,7 @@ public class UserService : IUserService
             var removeResult = await _userManager.RemoveFromRolesAsync(user, roles);
             if (!removeResult.Succeeded)
                 return new (new ErrorResult(
-                    $"Removing existing roles from user '{userId}' failed",
+                    $"Removing existing roles from user '{user.UserName}' failed",
                     ErrorCodes.USER_UPDATE_FAILED,
                     removeResult.Errors.Select(x => x.Description).ToList()
                 ));
@@ -41,7 +41,7 @@ public class UserService : IUserService
             return new();
         else
             return new(new ErrorResult(
-                $"Adding user '{userId}' to role '{roleName}' failed",
+                $"Adding user '{user.UserName}' to role '{roleName}' failed",
                 ErrorCodes.USER_UPDATE_FAILED,
                 addResult.Errors.Select(x => x.Description).ToList()
             ));

@@ -58,11 +58,13 @@ dotnet ef migrations remove --project LogisticsCorp.Data
 ### Database Seeding
 - Seeds run automatically on application startup via `app.MigrateDbAndSeedData()` in Program.cs
 - Seed data files located in `LogisticsCorp.Data/Seeds/` (JSON format)
-- Current seeders (in order): RoleSeeder (1), OfficeSeeder (2), PricingRuleSeeder (3), EmployeeSeeder (4), ClientSeeder (5), ShipmentSeeder (6), ShipmentHistorySeeder (7)
+- Current seeders (in order): RoleSeeder (1), OfficeSeeder (2), PricingRuleSeeder (3), EmployeeSeeder (4), ClientSeeder (5), ShipmentSeeder (6), ShipmentHistorySeeder (7), AdminSeeder (100)
 - Employee and Client seed data include nested User objects
 - Users are created automatically when seeding Employees/Clients
 - Default password for all seeded users: P@ssw0rd (defined in `Constants.DEFAULT_PASSWORD`)
-- Default test user: jack.martin@example.com / P@ssw0rd
+- Default test users:
+  - Employee: jack.martin@example.com / P@ssw0rd
+  - Admin: admin.admin@example.com / P@ssw0rd
 
 ## Architecture & Project Structure
 
@@ -78,6 +80,7 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 - **Key Services**:
   - `AuthService`: User authentication, credential validation, and token generation (LogisticsCorp.API/Services/AuthService.cs)
   - `TokenService`: JWT access token and refresh token generation (LogisticsCorp.API/Services/TokenService.cs)
+  - `UserService`: User role management (add/remove roles with overwrite control)
 - **Key Controllers**:
   - `AuthController`: Authentication endpoints - POST /api/auth/login, POST /api/auth/refresh
 - **Patterns**:
@@ -153,6 +156,7 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 - Control loading state with `LoaderService`
 
 ### Authentication & Authorization
+- **Roles**: EMPLOYEE, CLIENT, ADMIN (defined in `SeedConstants`)
 - **JWT Configuration**: Tokens configured in appsettings.json under `JwtSettings`
   - `SecurityKey`: Secret key for signing tokens
   - `AccessTokenExpirationMinutes`: Access token lifetime (default: 60 minutes)

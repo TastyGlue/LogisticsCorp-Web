@@ -9,6 +9,9 @@ public static class SeedConstants
     public const string ROLE_CLIENT_NAME = "CLIENT";
     public const string ROLE_CLIENT_ID = "B1C2D3E4-5F6A-7B8C-9D0E-1F2A3B4C5D6E";
 
+    public const string ROLE_ADMIN_NAME = "ADMIN";
+    public const string ROLE_ADMIN_ID = "D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A";
+
     // Users
     public const string USER_JM_ID = "C1D2E3F4-5A6B-7C8D-9E0F-1A2B3C4D5E6F";
 }

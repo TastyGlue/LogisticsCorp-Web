@@ -8,5 +8,10 @@
     "Id": "B1C2D3E4-5F6A-7B8C-9D0E-1F2A3B4C5D6E",
     "Name": "CLIENT",
     "NormalizedName": "CLIENT"
+  },
+  {
+    "Id": "D4E5F6A7-8B9C-0D1E-2F3A-4B5C6D7E8F9A",
+    "Name": "ADMIN",
+    "NormalizedName": "ADMIN"
   }
 ]

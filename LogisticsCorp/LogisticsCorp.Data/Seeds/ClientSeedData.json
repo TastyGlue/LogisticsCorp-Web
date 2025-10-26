@@ -5,7 +5,6 @@
     "Address": "789 Maple Street",
     "City": "New York",
     "PostalCode": "10002",
-    "IsActive": true,
     "User": {
       "Id": "B6C7D8E9-0F1A-2B3C-4D5E-6F7A8B9C0D1E",
       "UserName": "jennifer.taylor@example.com",
@@ -21,7 +20,6 @@
     "Address": "456 Oak Avenue",
     "City": "Los Angeles",
     "PostalCode": "90002",
-    "IsActive": true,
     "User": {
       "Id": "C7D8E9F0-1A2B-3C4D-5E6F-7A8B9C0D1E2F",
       "UserName": "robert.anderson@example.com",
@@ -37,7 +35,6 @@
     "Address": "123 Pine Road",
     "City": "Chicago",
     "PostalCode": "60602",
-    "IsActive": true,
     "User": {
       "Id": "D8E9F0A1-2B3C-4D5E-6F7A-8B9C0D1E2F3A",
       "UserName": "lisa.thomas@example.com",
@@ -53,7 +50,6 @@
     "Address": "321 Elm Street",
     "City": "Houston",
     "PostalCode": "77002",
-    "IsActive": true,
     "User": {
       "Id": "E9F0A1B2-3C4D-5E6F-7A8B-9C0D1E2F3A4B",
       "UserName": "james.martinez@example.com",
@@ -69,7 +65,6 @@
     "Address": "654 Cedar Lane",
     "City": "New York",
     "PostalCode": "10003",
-    "IsActive": true,
     "User": {
       "Id": "F0A1B2C3-4D5E-6F7A-8B9C-0D1E2F3A4B5C",
       "UserName": "amanda.garcia@example.com",
