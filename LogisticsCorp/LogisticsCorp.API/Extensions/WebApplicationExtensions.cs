@@ -22,6 +22,12 @@ public static class WebApplicationExtensions
         // Migrate the database to the latest version or create it if it doesn't exist
         await dbContext.Database.MigrateAsync();
 
+        var iConfig = serviceProvider.GetRequiredService<IConfiguration>();
+        var seedEnabled = iConfig.GetValue<bool>("SeedEnabled");
+
+        if (!seedEnabled)
+            return;
+
         // Seed the database with initial data
         var seeders = serviceProvider.GetServices<IDataSeeder>().OrderBy(s => s.Order);
 

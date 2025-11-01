@@ -7,6 +7,17 @@
 /// </summary>
 public interface IDataSeeder
 {
+    /// <summary>
+    /// Gets the order of execution for this item.
+    /// </summary>
     int Order { get; }
+
+    /// <summary>
+    /// Seeds the specified <see cref="DbContext"/> with initial data.
+    /// </summary>
+    /// <remarks>This method populates the database with predefined data necessary for application
+    /// initialization.</remarks>
+    /// <param name="context">The <see cref="DbContext"/> to seed. Cannot be null.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     Task Seed(DbContext context);
 }
