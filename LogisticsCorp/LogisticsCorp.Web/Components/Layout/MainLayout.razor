@@ -1,6 +1,29 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="4">
+
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => isDrawerOpen = !isDrawerOpen)" />
+
+        <MudDrawer @bind-Open="isDrawerOpen" ClipMode="DrawerClipMode.Docked" Elevation="8">
+            <MudNavMenu>
+                <MudNavLink Href="" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+                <MudNavLink Href="shipments" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.LocalShipping">Shipments</MudNavLink>
+            </MudNavMenu>
+        </MudDrawer>
+    </MudAppBar>
+    <MudMainContent>
+        <MudOverlay Visible="IsLoading" ZIndex="1010" LightBackground Absolute="true">
+            <MudProgressCircular Size="@Size.Large" Indeterminate="true" Color="@Color.Primary" />
+        </MudOverlay>
+        @Body
+    </MudMainContent>
+</MudLayout>
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.

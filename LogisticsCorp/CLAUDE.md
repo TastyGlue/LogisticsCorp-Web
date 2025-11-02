@@ -219,3 +219,4 @@ The `/demo` folder contains a static HTML/CSS/JS demo page showcasing the applic
 - **Main Branch**: `main` (use for PRs)
 - **Current Branch**: `Seeders`
 - When having to add new namespaces, in the cases where the namespace is more niche and will be used only once or twice - set a "using" directive at the top of the class, otherwise add it to that project's GlobalUsings
+- When creating blazor components/pages always create a code-behind file (e.g. "sample.razor" and "sample.razor.cs") and place all code, parameters, injection, etc. in there. The only exception is when the entire code section is less than 10 lines of code
