@@ -1,16 +1,30 @@
 ﻿namespace LogisticsCorp.Web.Components.Layout;
 
-public partial class MainLayout : LayoutComponentBase
+public partial class MainLayout : LayoutComponentBase, IDisposable
 {
+    [Inject]
+    private PageStateService PageStateService { get; set; } = default!;
+
     private bool isDrawerOpen = true;
     private bool IsLoading { get; set; } = false;
 
-    // Page title and subtitle properties (can be set from individual pages)
-    protected string PageTitle { get; set; } = "Dashboard";
-    protected string PageSubtitle { get; set; } = "Welcome to LogisticsCorp";
+    protected override void OnInitialized()
+    {
+        PageStateService.OnChange += HandlePageStateChanged;
+    }
+
+    private void HandlePageStateChanged()
+    {
+        StateHasChanged();
+    }
 
     private void ToggleDrawer()
     {
         isDrawerOpen = !isDrawerOpen;
+    }
+
+    public void Dispose()
+    {
+        PageStateService.OnChange -= HandlePageStateChanged;
     }
 }

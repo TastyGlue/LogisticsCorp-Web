@@ -149,11 +149,21 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 4. Register in `ServiceCollectionExtensions.AddSeeders()`
 
 ### Blazor Components
-- Extend `ExtendedComponentBase` for access to common services
-- Use `@inject` for additional dependencies
+- Extend `ExtendedComponentBase` for access to common services (NavigationManager, LocalStorage, LoaderService, UserStateContainer, PageStateService, Snackbar, DialogService, IJSRuntime)
+- Use `@inject` for additional dependencies not available in base class
 - Access user info via `UserStateContainer`
 - Show notifications with `Notify()` method
 - Control loading state with `LoaderService`
+- **Set page titles**: Call `PageStateService.SetPageInfo(title, subtitle)` in `OnInitialized()` to update the MainLayout header (automatically available when extending `ExtendedComponentBase`)
+  ```csharp
+  public partial class ShipmentHistory : ExtendedComponentBase
+  {
+      protected override void OnInitialized()
+      {
+          PageStateService.SetPageInfo("Shipment History", "Track and view detailed shipment information");
+      }
+  }
+  ```
 
 ### Authentication & Authorization
 - **Roles**: EMPLOYEE, CLIENT, ADMIN (defined in `SeedConstants`)

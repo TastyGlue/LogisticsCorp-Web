@@ -12,7 +12,7 @@ global using LogisticsCorp.Web.Services;
 //global using LogisticsCorp.Web.Services.ApiServices.Interfaces;
 //global using LogisticsCorp.Web.Models;
 //global using LogisticsCorp.Web.Models.ViewModels;
-//global using LogisticsCorp.Web.Components.Abstract;
+global using LogisticsCorp.Web.Components.Abstract;
 //global using LogisticsCorp.Web.Components.Shared;
 global using LogisticsCorp.Shared.Constants;
 global using LogisticsCorp.Shared.Enums;
