@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogisticsCorp - Shipment History</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-logo">
+            <div class="logo-placeholder-small">LOGO</div>
+            <span class="mobile-company-name">LogisticsCorp</span>
+        </div>
+        <div class="user-profile mobile-user-profile">
+            <div class="user-avatar">JD</div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <div class="logo-placeholder">LOGO</div>
+                <h1 class="company-name">LogisticsCorp</h1>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">Shipment History</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-text">New Shipment</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🏢</span>
+                    <span class="nav-text">Offices</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="page-title">
+                    <h2>Shipment History</h2>
+                    <p class="page-subtitle">Track and view detailed shipment information</p>
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="user-name">John Doe</span>
+                        <span class="user-role">Office Staff</span>
+                    </div>
+                    <div class="user-avatar">JD</div>
+                </div>
+            </header>
+
+            <!-- Shipment Selector -->
+            <div class="shipment-selector-container">
+                <label for="shipment-select" class="selector-label">Select Shipment:</label>
+                <select id="shipment-select" class="shipment-select">
+                    <option value="1">SHP-2024-001 - Electronics Package</option>
+                    <option value="2">SHP-2024-002 - Documents</option>
+                    <option value="3">SHP-2024-003 - Fragile Items</option>
+                </select>
+            </div>
+
+            <!-- Shipment Details Card -->
+            <div class="shipment-details-card">
+                <div class="card-header">
+                    <h3>Shipment Details</h3>
+                    <span class="status-badge status-delivered">Delivered</span>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-group">
+                        <span class="detail-label">Tracking Number</span>
+                        <span class="detail-value" id="tracking-number">SHP-2024-001</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Weight</span>
+                        <span class="detail-value" id="weight">5.2 kg</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Price</span>
+                        <span class="detail-value" id="price">$45.00</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Delivery Type</span>
+                        <span class="detail-value" id="delivery-type">Home Delivery</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Sender</span>
+                        <span class="detail-value" id="sender">Alice Johnson</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Recipient</span>
+                        <span class="detail-value" id="recipient">Bob Smith</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Origin Office</span>
+                        <span class="detail-value" id="origin-office">Downtown Branch</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Destination</span>
+                        <span class="detail-value" id="destination">123 Main St, Springfield</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Registered On</span>
+                        <span class="detail-value" id="registered-on">2024-01-15 10:30 AM</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Picked Up On</span>
+                        <span class="detail-value" id="picked-up-on">2024-01-15 02:15 PM</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Delivered On</span>
+                        <span class="detail-value" id="delivered-on">2024-01-16 11:45 AM</span>
+                    </div>
+
+                    <div class="detail-group">
+                        <span class="detail-label">Courier</span>
+                        <span class="detail-value" id="courier">Mike Wilson</span>
+                    </div>
+
+                    <div class="detail-group full-width">
+                        <span class="detail-label">Description</span>
+                        <span class="detail-value" id="description">Electronic components and accessories - Handle with care</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="timeline-card">
+                <div class="card-header">
+                    <h3>Shipment Timeline</h3>
+                </div>
+
+                <div class="timeline" id="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-status status-delivered">Delivered</span>
+                                <span class="timeline-date">Jan 16, 2024 - 11:45 AM</span>
+                            </div>
+                            <div class="timeline-location">123 Main St, Springfield</div>
+                            <div class="timeline-notes">Package successfully delivered to recipient. Signature obtained.</div>
+                            <div class="timeline-employee">Handled by: Mike Wilson</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-status status-in-transit">In Transit</span>
+                                <span class="timeline-date">Jan 15, 2024 - 02:15 PM</span>
+                            </div>
+                            <div class="timeline-location">Downtown Distribution Center</div>
+                            <div class="timeline-notes">Package picked up and en route to destination.</div>
+                            <div class="timeline-employee">Handled by: Mike Wilson</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <span class="timeline-status status-registered">Registered</span>
+                                <span class="timeline-date">Jan 15, 2024 - 10:30 AM</span>
+                            </div>
+                            <div class="timeline-location">Downtown Branch</div>
+                            <div class="timeline-notes">Shipment registered and ready for pickup.</div>
+                            <div class="timeline-employee">Handled by: Sarah Davis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -193,6 +193,19 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 - Mapster imported globally for object mapping
 - Entity Framework, Identity, and project references available without explicit imports
 
+## Demo Folder
+
+The `/demo` folder contains a static HTML/CSS/JS demo page showcasing the application's design language and visual style:
+- **Purpose**: Visual reference for design, layout, and UI patterns
+- **Contents**: Shipment History page demo with dark theme and yellow accent colors
+- **Files**: `index.html`, `styles.css`, `script.js`, `DemoInstruction.md`
+- **Design System**:
+  - Dark mode theme (`#0F0F0F` background, `#1A1A1A` cards)
+  - Yellow primary color (`#FFD700`) with proper contrast ratios
+  - Responsive design (desktop, tablet, mobile with hamburger menu)
+  - Consistent spacing, typography, and visual feedback patterns
+- **Use Case**: Reference this demo when building Blazor components to maintain consistent design language across the application
+
 ## Important Notes
 
 - **Nullable Reference Types**: Enabled across all projects (`<Nullable>enable</Nullable>`)
