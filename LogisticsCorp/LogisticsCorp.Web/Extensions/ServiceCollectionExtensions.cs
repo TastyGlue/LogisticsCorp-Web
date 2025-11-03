@@ -52,6 +52,11 @@ public static class ServiceCollectionExtensions
     private static WebApplicationBuilder RegisterApiServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddTransient<IApiAuthService, ApiAuthService>();
+        builder.Services.AddTransient<IApiClientService, ApiClientService>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
 
         return builder;
     }
