@@ -36,6 +36,28 @@ public static class ServiceCollectionExtensions
         builder.Services.AddScoped<UserStateContainer>();
         builder.Services.AddScoped<PageStateService>();
 
+        builder.RegisterValidators();
+        builder.RegisterApiServices();
+
+        return builder;
+    }
+
+    private static WebApplicationBuilder RegisterValidators(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddSingleton<IValidator<LoginModel>, LoginModelValidator>();
+
+        return builder;
+    }
+
+    private static WebApplicationBuilder RegisterApiServices(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddTransient<IApiAuthService, ApiAuthService>();
+        builder.Services.AddTransient<IApiClientService, ApiClientService>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<Service, Service>();
+
         return builder;
     }
 }
