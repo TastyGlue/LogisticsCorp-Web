@@ -1,6 +1,64 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<MudThemeProvider Theme="@Themes.DefaultTheme" IsDarkMode="true" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    @* Mobile Header *@
+    <div class="mobile-header">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Primary"
+                       Class="hamburger-btn"
+                       OnClick="@ToggleDrawer" />
+        <div class="mobile-logo">
+            <div class="mobile-logo-placeholder">
+                <MudText Typo="Typo.caption" Class="logo-text">LOGO</MudText>
+            </div>
+            <MudText Typo="Typo.body1" Class="mobile-company-name">LogisticsCorp</MudText>
+        </div>
+        <div class="mobile-user-profile">
+            <MudAvatar Color="Color.Primary" Size="Size.Small" Class="user-avatar-small">JD</MudAvatar>
+        </div>
+    </div>
+
+    @* Sidebar Drawer *@
+    <MudDrawer @bind-Open="isDrawerOpen"
+               ClipMode="DrawerClipMode.Never"
+               Elevation="0"
+               Variant="@DrawerVariant.Responsive"
+               Class="app-drawer" 
+               Breakpoint="Breakpoint.Sm">
+        <NavMenu />
+    </MudDrawer>
+
+    @* Main Content *@
+    <MudMainContent Class="main-content-wrapper">
+        @* Top Bar *@
+        <div class="top-bar">
+            <div class="page-title-section">
+                <MudText Typo="Typo.h2" Class="page-title">@PageStateService.PageTitle</MudText>
+                <MudText Typo="Typo.body2" Class="page-subtitle">@PageStateService.PageSubtitle</MudText>
+            </div>
+            <div class="user-profile-section">
+                <div class="user-info">
+                    <MudText Typo="Typo.body1" Class="user-name">John Doe</MudText>
+                    <MudText Typo="Typo.caption" Class="user-role">Office Staff</MudText>
+                </div>
+                <MudAvatar Color="Color.Primary" Size="Size.Medium" Class="user-avatar">JD</MudAvatar>
+            </div>
+        </div>
+
+        @* Page Content *@
+        <div class="page-content">
+            <MudOverlay Visible="IsLoading" ZIndex="1010" DarkBackground Absolute="true">
+                <MudProgressCircular Size="@Size.Large" Indeterminate="true" Color="@Color.Primary" />
+            </MudOverlay>
+            @Body
+        </div>
+    </MudMainContent>
+</MudLayout>
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.

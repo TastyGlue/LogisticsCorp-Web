@@ -34,6 +34,7 @@ public static class ServiceCollectionExtensions
 
         builder.Services.AddScoped<LoaderService>();
         builder.Services.AddScoped<UserStateContainer>();
+        builder.Services.AddScoped<PageStateService>();
 
         return builder;
     }

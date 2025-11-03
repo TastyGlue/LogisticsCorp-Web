@@ -1,0 +1,179 @@
+﻿:root {
+    /* ===== CUSTOM COLOR PALETTE (LogisticsCorp Design System) ===== */
+    /* Primary Colors */
+    --primary-yellow: #FFD700;
+    --primary-yellow-hover: #FFC700;
+    --primary-yellow-dim: rgba(255, 215, 0, 0.1);
+    --primary-yellow-border: rgba(255, 215, 0, 0.2);
+
+    /* Background Colors */
+    --bg-dark: #0F0F0F;
+    --bg-card: #1A1A1A;
+    --bg-card-hover: #202020;
+    --bg-input: #151515;
+
+    /* Text Colors */
+    --text-primary: #E8E8E8;
+    --text-secondary: #A0A0A0;
+    --text-dim: #707070;
+
+    /* Border Colors */
+    --border-color: #2A2A2A;
+    --border-hover: #353535;
+
+    /* Status Colors */
+    --status-registered: #60A5FA;
+    --status-in-transit: #A78BFA;
+    --status-delivered: #34D399;
+    --status-cancelled: #F87171;
+}
+
+/* ===== MUDBLAZOR DARK THEME OVERRIDES ===== */
+/* Apply dark theme to body */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+}
+
+/* MudPaper dark theme */
+.mud-paper {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
+}
+
+/* MudCard dark theme */
+.mud-card {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+}
+
+/* MudAppBar dark theme */
+.mud-appbar {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* MudDrawer dark theme */
+.mud-drawer {
+    color: var(--text-primary) !important;
+    border-right: 1px solid var(--border-color);
+}
+
+/* MudTextField dark theme */
+.mud-input {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-input-root {
+    border-color: var(--border-color) !important;
+}
+
+.mud-input-root:hover {
+    border-color: var(--primary-yellow-border) !important;
+}
+
+.mud-input-root.mud-input-root-filled {
+    background-color: var(--bg-input) !important;
+}
+
+/* MudButton primary (yellow theme) */
+.mud-button-root.mud-button-filled.mud-button-filled-primary {
+    background-color: var(--primary-yellow) !important;
+    color: var(--bg-dark) !important;
+    font-weight: 600;
+}
+
+.mud-button-root.mud-button-filled.mud-button-filled-primary:hover {
+    background-color: var(--primary-yellow-hover) !important;
+}
+
+.mud-button-root.mud-button-outlined.mud-button-outlined-primary {
+    border-color: var(--primary-yellow) !important;
+    color: var(--primary-yellow) !important;
+}
+
+.mud-button-root.mud-button-text.mud-button-text-primary {
+    color: var(--primary-yellow) !important;
+}
+
+/* MudNavLink active state (yellow highlight) */
+.mud-nav-link.active {
+    background-color: var(--primary-yellow-dim) !important;
+    color: var(--primary-yellow) !important;
+}
+
+.mud-nav-link:hover {
+    background-color: var(--bg-card-hover) !important;
+}
+
+/* MudSelect dark theme */
+.mud-select {
+    background-color: var(--bg-input) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.mud-select:hover {
+    border-color: var(--primary-yellow-border) !important;
+}
+
+/* MudMenu / MudPopover dark theme */
+.mud-popover {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+}
+
+.mud-menu {
+    background-color: var(--bg-card) !important;
+}
+
+.mud-menu-item:hover {
+    background-color: var(--bg-card-hover) !important;
+}
+
+/* MudTable dark theme */
+.mud-table {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-table-head {
+    background-color: var(--bg-input) !important;
+}
+
+.mud-table-row:hover {
+    background-color: var(--bg-card-hover) !important;
+}
+
+/* MudDivider dark theme */
+.mud-divider {
+    border-color: var(--border-color) !important;
+}
+
+/* MudChip status badges */
+.mud-chip.status-registered {
+    background-color: rgba(96, 165, 250, 0.15) !important;
+    color: var(--status-registered) !important;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.mud-chip.status-in-transit {
+    background-color: rgba(167, 139, 250, 0.15) !important;
+    color: var(--status-in-transit) !important;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.mud-chip.status-delivered {
+    background-color: rgba(52, 211, 153, 0.15) !important;
+    color: var(--status-delivered) !important;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.mud-chip.status-cancelled {
+    background-color: rgba(248, 113, 113, 0.15) !important;
+    color: var(--status-cancelled) !important;
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}

@@ -1,0 +1,29 @@
+@* Navigation Menu Component - Matches LogisticsCorp Demo Design *@
+
+<div class="sidebar-logo-container">
+    <div class="sidebar-logo-placeholder">
+        <MudText Typo="Typo.caption" Class="logo-text">LOGO</MudText>
+    </div>
+    <MudText Typo="Typo.h6" Class="sidebar-company-name">LogisticsCorp</MudText>
+</div>
+
+<MudNavMenu Class="mud-nav-menu-custom">
+    <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Dashboard">
+        Dashboard
+    </MudNavLink>
+    <MudNavLink Href="/shipment-history" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Inventory">
+        Shipment History
+    </MudNavLink>
+    <MudNavLink Href="/new-shipment" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">
+        New Shipment
+    </MudNavLink>
+    <MudNavLink Href="/clients" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">
+        Clients
+    </MudNavLink>
+    <MudNavLink Href="/offices" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Business">
+        Offices
+    </MudNavLink>
+    <MudNavLink Href="/settings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Settings">
+        Settings
+    </MudNavLink>
+</MudNavMenu>

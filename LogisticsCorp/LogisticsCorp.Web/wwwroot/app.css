@@ -1,3 +1,224 @@
+/* ===== LOGISTICSCORP CUSTOM LAYOUT STYLES ===== */
+
+/* Mobile Header */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1001;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mobile-logo-placeholder {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.mobile-company-name {
+    font-weight: 600;
+    color: var(--primary-yellow) !important;
+}
+
+.hamburger-btn {
+    padding: 0;
+}
+
+/* Sidebar Drawer */
+.app-drawer {
+}
+
+.sidebar-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem 0 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--bg-dark) !important;
+}
+
+.sidebar-company-name {
+    font-weight: 600;
+    color: var(--primary-yellow) !important;
+    text-align: center;
+}
+
+/* Navigation Menu Customization */
+.mud-nav-menu-custom {
+    padding: 0 1rem;
+}
+
+.mud-nav-menu-custom .mud-nav-link {
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.1s ease;
+    color: var(--text-secondary) !important;
+}
+
+.mud-nav-menu-custom .mud-nav-link:hover {
+    background-color: var(--bg-card-hover) !important;
+    color: var(--text-primary) !important;
+    transform: translateX(2px);
+}
+
+.mud-nav-menu-custom .mud-nav-link.active {
+    background-color: var(--primary-yellow-dim) !important;
+    color: var(--primary-yellow) !important;
+}
+
+/* Main Content Wrapper */
+.main-content-wrapper {
+    padding: 2rem;
+    max-width: 1400px;
+}
+
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-title-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.page-title {
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+}
+
+.page-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+.user-profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.user-name {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+
+.user-role {
+    color: var(--text-secondary) !important;
+}
+
+.user-avatar {
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%) !important;
+    color: var(--bg-dark) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.user-avatar-small {
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%) !important;
+    color: var(--bg-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* Page Content */
+.page-content {
+    position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content-wrapper {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        padding: 1rem;
+    }
+
+    .top-bar {
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .user-profile-section {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Show mobile header */
+    .mobile-header {
+        display: flex;
+    }
+
+    /* Hide desktop user profile in top bar */
+    .top-bar .user-profile-section {
+        display: none;
+    }
+
+    /* Adjust main content for mobile header */
+    .main-content-wrapper {
+        padding-top: calc(60px + 1rem);
+    }
+
+    /* Sidebar adjustments for mobile */
+    .app-drawer {
+        top: 60px !important;
+    }
+}
+
+/* ===== ORIGINAL STYLES ===== */
+
 h1:focus {
     outline: none;
 }

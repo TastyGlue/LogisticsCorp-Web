@@ -149,11 +149,21 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
 4. Register in `ServiceCollectionExtensions.AddSeeders()`
 
 ### Blazor Components
-- Extend `ExtendedComponentBase` for access to common services
-- Use `@inject` for additional dependencies
+- Extend `ExtendedComponentBase` for access to common services (NavigationManager, LocalStorage, LoaderService, UserStateContainer, PageStateService, Snackbar, DialogService, IJSRuntime)
+- Use `@inject` for additional dependencies not available in base class
 - Access user info via `UserStateContainer`
 - Show notifications with `Notify()` method
 - Control loading state with `LoaderService`
+- **Set page titles**: Call `PageStateService.SetPageInfo(title, subtitle)` in `OnInitialized()` to update the MainLayout header (automatically available when extending `ExtendedComponentBase`)
+  ```csharp
+  public partial class ShipmentHistory : ExtendedComponentBase
+  {
+      protected override void OnInitialized()
+      {
+          PageStateService.SetPageInfo("Shipment History", "Track and view detailed shipment information");
+      }
+  }
+  ```
 
 ### Authentication & Authorization
 - **Roles**: EMPLOYEE, CLIENT, ADMIN (defined in `SeedConstants`)
@@ -219,3 +229,4 @@ The `/demo` folder contains a static HTML/CSS/JS demo page showcasing the applic
 - **Main Branch**: `main` (use for PRs)
 - **Current Branch**: `Seeders`
 - When having to add new namespaces, in the cases where the namespace is more niche and will be used only once or twice - set a "using" directive at the top of the class, otherwise add it to that project's GlobalUsings
+- When creating blazor components/pages always create a code-behind file (e.g. "sample.razor" and "sample.razor.cs") and place all code, parameters, injection, etc. in there. The only exception is when the entire code section is less than 10 lines of code
