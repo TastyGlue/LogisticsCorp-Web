@@ -22,12 +22,11 @@
                               InputType="InputType.Email"
                               Class="login-field" />
 
-                <MudTextField @bind-Value="Model.Password"
-                              For="@(() => Model.Password)"
-                              Label="Password"
-                              Variant="Variant.Outlined"
-                              InputType="InputType.Password"
-                              Class="login-field" />
+                <MudPasswordField @bind-Value="Model.Password"
+                                  For="@(() => Model.Password)"
+                                  Label="Password"
+                                  Variant="Variant.Outlined"
+                                  Class="login-field" />
 
                 <div class="login-actions">
                     <MudButton Variant="Variant.Filled"
