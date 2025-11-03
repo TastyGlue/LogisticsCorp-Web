@@ -1,5 +1,17 @@
 /* ===== LOGISTICSCORP CUSTOM LAYOUT STYLES ===== */
 
+/* Anonymous Layout (Login, Register, etc.) */
+.anonymous-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0F0F0F;
+    padding: 1rem;
+}
+
+/* ===== Main Layout (Authenticated Pages) ===== */
+
 /* Mobile Header */
 .mobile-header {
     display: none;
