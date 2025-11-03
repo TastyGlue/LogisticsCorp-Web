@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="@Themes.DefaultTheme" IsDarkMode="true" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -27,8 +27,9 @@
     <MudDrawer @bind-Open="isDrawerOpen"
                ClipMode="DrawerClipMode.Never"
                Elevation="0"
-               Variant="@DrawerVariant.Persistent"
-               Class="app-drawer">
+               Variant="@DrawerVariant.Responsive"
+               Class="app-drawer" 
+               Breakpoint="Breakpoint.Sm">
         <NavMenu />
     </MudDrawer>
 

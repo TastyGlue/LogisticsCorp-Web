@@ -39,13 +39,11 @@
 }
 
 .hamburger-btn {
-    color: var(--primary-yellow) !important;
+    padding: 0;
 }
 
 /* Sidebar Drawer */
 .app-drawer {
-    width: 260px !important;
-    background-color: var(--bg-card) !important;
 }
 
 .sidebar-logo-container {
@@ -187,7 +185,6 @@
     }
 
     .top-bar {
-        flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
@@ -198,7 +195,7 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     /* Show mobile header */
     .mobile-header {
         display: flex;
@@ -216,10 +213,7 @@
 
     /* Sidebar adjustments for mobile */
     .app-drawer {
-        position: fixed !important;
         top: 60px !important;
-        height: calc(100vh - 60px) !important;
-        z-index: 1000 !important;
     }
 }
 
