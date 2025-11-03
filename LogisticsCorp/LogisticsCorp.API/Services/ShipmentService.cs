@@ -1,0 +1,85 @@
+﻿using LogisticsCorp.Shared.Models.DTOs;
+using MapsterMapper;
+
+namespace LogisticsCorp.API.Services
+{
+    public class ShipmentService : IShipmentService
+    {
+        private readonly LogisticsCorpDbContext _context;
+        private readonly IMapper _mapper;
+
+        public ShipmentService(LogisticsCorpDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<CustomResult> Get(Guid id)
+        {
+            var shipment = await _context.Shipments
+                .Include(s => s.Sender)
+                .Include(s => s.Recipient)
+                .Include(s => s.RegisteredByEmployee)
+                .Include(s => s.Courier)
+                .Include(s => s.OriginOffice)
+                .Include(s => s.DestinationOffice)
+                .Include(s => s.History)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (shipment == null)
+                return new CustomResult(new ErrorResult($"Shipment with ID {id} not found.", ErrorCodes.ENTITY_NOT_FOUND));
+
+            return new CustomResult<Shipment>(shipment);
+        }
+
+        public async Task<CustomResult> GetAll()
+        {
+            var shipments = await _context.Shipments
+                .Include(s => s.Sender)
+                .Include(s => s.Recipient)
+                .Include(s => s.RegisteredByEmployee)
+                .Include(s => s.Courier)
+                .Include(s => s.OriginOffice)
+                .Include(s => s.DestinationOffice)
+                .Include(s => s.History)
+                .ToListAsync();
+
+            return new CustomResult<IEnumerable<Shipment>>(shipments);
+        }
+
+        public async Task<CustomResult> Create(ShipmentDto dto)
+        {
+            var shipment = _mapper.Map<Shipment>(dto);
+            _context.Shipments.Add(shipment);
+            await _context.SaveChangesAsync();
+            return new CustomResult<Shipment>(shipment);
+        }
+
+        public async Task<CustomResult> Update(Guid id, ShipmentDto dto)
+        {
+            if (id != dto.Id)
+                return new CustomResult(new ErrorResult("Mismatching ids", ErrorCodes.ENTITY_MISMATCH_ID));
+
+            var shipment = await _context.Shipments.FindAsync(id);
+            if (shipment == null)
+                return new CustomResult(new ErrorResult("Shipment not found", ErrorCodes.ENTITY_NOT_FOUND));
+
+            _context.Entry(shipment).CurrentValues.SetValues(dto);
+            await _context.SaveChangesAsync();
+
+            return new CustomResult<Shipment>(shipment);
+        }
+
+        public async Task<CustomResult> Delete(Guid id)
+        {
+            var shipment = await _context.Shipments.FindAsync(id);
+            if (shipment == null)
+                return new CustomResult(new ErrorResult("Shipment not found", ErrorCodes.ENTITY_NOT_FOUND));
+
+            _context.Shipments.Remove(shipment);
+            await _context.SaveChangesAsync();
+
+            return new CustomResult<string>("Deleted successfully!");
+        }
+    }
+}
