@@ -10,10 +10,22 @@ namespace LogisticsCorp.API
 
         public static void ConfigureMappings()
         {
+            TypeAdapterConfig<Account, AccountDto>.NewConfig()
+                .Include<Client, ClientDto>()
+                    .MaxDepth(3)
+                .Include<Employee, EmployeeDto>()
+                    .MaxDepth(3);
+
+            // Derived → Derived mappings
             TypeAdapterConfig<Client, ClientDto>.NewConfig()
                 .MaxDepth(3);
-            TypeAdapterConfig<Account, AccountDto>.NewConfig()
+            TypeAdapterConfig<Employee, EmployeeDto>.NewConfig()
                 .MaxDepth(3);
+
+            TypeAdapterConfig<AccountDto, Account>.NewConfig()
+                .Include<ClientDto, Client>()
+                .Include<EmployeeDto, Employee>();
+
             //TypeAdapterConfig<Class, ClassDto>.NewConfig()
             //    .MaxDepth(3);
             //TypeAdapterConfig<Grade, GradeDto>.NewConfig()
