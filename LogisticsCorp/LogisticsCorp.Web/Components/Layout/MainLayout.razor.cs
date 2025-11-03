@@ -2,8 +2,9 @@
 
 public partial class MainLayout : LayoutComponentBase, IDisposable
 {
-    [Inject]
-    private PageStateService PageStateService { get; set; } = default!;
+    [Inject] private LoaderService LoaderService { get; set; } = default!;
+
+    [Inject] private PageStateService PageStateService { get; set; } = default!;
 
     private bool isDrawerOpen = true;
     private bool IsLoading { get; set; } = false;
@@ -11,6 +12,15 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
     protected override void OnInitialized()
     {
         PageStateService.OnChange += HandlePageStateChanged;
+
+        LoaderService.Register(state =>
+        {
+            InvokeAsync(() =>
+            {
+                IsLoading = state;
+                StateHasChanged();
+            });
+        });
     }
 
     private void HandlePageStateChanged()

@@ -1,4 +1,5 @@
 @page "/login"
+@inherits ExtendedComponentBase
 @layout AnonymousLayout
 
 <div class="login-container">
@@ -33,11 +34,17 @@
                                Color="Color.Primary"
                                Size="Size.Large"
                                FullWidth="true"
-                               Class="login-button">
+                               Class="login-button" 
+                               ButtonType="ButtonType.Submit">
                         Sign In
                     </MudButton>
                 </div>
             </EditForm>
+
+            @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+            {
+                <MudAlert Severity="Severity.Error">@ErrorMessage</MudAlert>
+            }
 
             <MudDivider Class="login-divider" />
 

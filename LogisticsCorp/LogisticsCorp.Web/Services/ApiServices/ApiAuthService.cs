@@ -1,6 +1,4 @@
-﻿using LogisticsCorp.Web.Services.ApiServices.Interfaces;
-
-namespace LogisticsCorp.Web.Services.ApiServices;
+﻿namespace LogisticsCorp.Web.Services.ApiServices;
 
 public class ApiAuthService : IApiAuthService
 {
@@ -11,15 +9,15 @@ public class ApiAuthService : IApiAuthService
         _httpClientService = httpClientService;
     }
 
-    public async Task<CustomResult<string>> LoginWithCredentials(LoginCredentials request)
+    public async Task<CustomResult<TokensResponse>> LoginWithCredentials(LoginCredentials request)
     {
         var client = _httpClientService.CreateApiClient();
 
-        string apiEndpoint = "auth/login";
+        string apiEndpoint = "api/auth/login";
 
         var response = await client.PostAsJsonAsync(apiEndpoint, request);
         var content = await response.Content.ReadAsStringAsync();
 
-        return CustomResultUtils.GetApiResponse<string>(response, content);
+        return CustomResultUtils.GetApiResponse<TokensResponse>(response, content);
     }
 }

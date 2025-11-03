@@ -7,6 +7,9 @@
 
 <MudLayout>
     <MudMainContent Class="anonymous-content-wrapper">
+        <MudOverlay Visible="IsLoading" ZIndex="1010" LightBackground Absolute="true">
+            <MudProgressCircular Size="@Size.Large" Indeterminate="true" Color="@Color.Primary" />
+        </MudOverlay>
         @Body
     </MudMainContent>
 </MudLayout>
