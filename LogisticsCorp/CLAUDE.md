@@ -164,6 +164,13 @@ LogisticsCorp.Web ──→ LogisticsCorp.Shared
       }
   }
   ```
+- **Forms Pattern**: Use `<EditForm>` with FluentValidation for form handling
+  - Create a DTO model class for form data
+  - Create a FluentValidation validator class implementing `AbstractValidator<TDto>`
+  - Register validator in DI: `services.AddScoped<IValidator<TDto>, TDtoValidator>()`
+  - Use `<FluentValidationValidator />` inside EditForm
+  - Bind MudBlazor fields with `@bind-Value` and `For` parameters for validation display
+  - Handle submission with `OnValidSubmit` event
 
 ### Authentication & Authorization
 - **Roles**: EMPLOYEE, CLIENT, ADMIN (defined in `SeedConstants`)
