@@ -53,10 +53,10 @@ public static class ServiceCollectionExtensions
     {
         builder.Services.AddTransient<IApiAuthService, ApiAuthService>();
         builder.Services.AddTransient<IApiClientService, ApiClientService>();
-        builder.Services.AddTransient<Service, Service>();
-        builder.Services.AddTransient<Service, Service>();
-        builder.Services.AddTransient<Service, Service>();
-        builder.Services.AddTransient<Service, Service>();
+        builder.Services.AddTransient<IApiEmployeeService, ApiEmployeeService>();
+        builder.Services.AddTransient<IApiOfficeService, ApiOfficeService>();
+        builder.Services.AddTransient<IApiPricingRuleService, ApiPricingRuleService>();
+        builder.Services.AddTransient<IApiShipmentService, ApiShipmentService>();
 
         return builder;
     }

@@ -13,49 +13,54 @@ namespace LogisticsCorp.Web.Services.ApiServices
             _tokenService = tokenService;
         }
 
-        public async Task<CustomResult<PricingRuleDto>> CreatePricingRule(PricingRuleDto dto)
+        public async Task<CustomResult<IEnumerable<PricingRuleDto>>> GetAll()
         {
             var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
             var client = _httpClientService.CreateApiClient(token);
-            var response = await client.PostAsJsonAsync("api/pricingrules", dto);
-            var content = await response.Content.ReadAsStringAsync();
-            return CustomResultUtils.GetApiResponse<PricingRuleDto>(response, content);
-        }
 
-        public async Task<CustomResult<PricingRuleDto>> UpdatePricingRule(Guid id, PricingRuleDto dto)
-        {
-            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
-            var client = _httpClientService.CreateApiClient(token);
-            var response = await client.PutAsJsonAsync($"api/pricingrules/{id}", dto);
-            var content = await response.Content.ReadAsStringAsync();
-            return CustomResultUtils.GetApiResponse<PricingRuleDto>(response, content);
-        }
-
-        public async Task<CustomResult<string>> DeletePricingRule(Guid id)
-        {
-            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
-            var client = _httpClientService.CreateApiClient(token);
-            var response = await client.DeleteAsync($"api/pricingrules/{id}");
-            var content = await response.Content.ReadAsStringAsync();
-            return CustomResultUtils.GetApiResponse<string>(response, content);
-        }
-
-        public async Task<CustomResult<IEnumerable<PricingRuleDto>>> GetAllPricingRules()
-        {
-            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
-            var client = _httpClientService.CreateApiClient(token);
             var response = await client.GetAsync("api/pricingrules");
             var content = await response.Content.ReadAsStringAsync();
             return CustomResultUtils.GetApiResponse<IEnumerable<PricingRuleDto>>(response, content);
         }
 
-        public async Task<CustomResult<PricingRuleDto>> GetPricingRule(Guid id)
+        public async Task<CustomResult<PricingRuleDto>> Get(Guid id)
         {
             var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
             var client = _httpClientService.CreateApiClient(token);
+
             var response = await client.GetAsync($"api/pricingrules/{id}");
             var content = await response.Content.ReadAsStringAsync();
             return CustomResultUtils.GetApiResponse<PricingRuleDto>(response, content);
+        }
+
+        public async Task<CustomResult<PricingRuleDto>> Create(PricingRuleDto dto)
+        {
+            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
+            var client = _httpClientService.CreateApiClient(token);
+
+            var response = await client.PostAsJsonAsync("api/pricingrules", dto);
+            var content = await response.Content.ReadAsStringAsync();
+            return CustomResultUtils.GetApiResponse<PricingRuleDto>(response, content);
+        }
+
+        public async Task<CustomResult<PricingRuleDto>> Update(Guid id, PricingRuleDto dto)
+        {
+            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
+            var client = _httpClientService.CreateApiClient(token);
+
+            var response = await client.PutAsJsonAsync($"api/pricingrules/{id}", dto);
+            var content = await response.Content.ReadAsStringAsync();
+            return CustomResultUtils.GetApiResponse<PricingRuleDto>(response, content);
+        }
+
+        public async Task<CustomResult<string>> Delete(Guid id)
+        {
+            var token = await _tokenService.GetToken(Constants.ACCESS_TOKEN_KEY);
+            var client = _httpClientService.CreateApiClient(token);
+
+            var response = await client.DeleteAsync($"api/pricingrules/{id}");
+            var content = await response.Content.ReadAsStringAsync();
+            return CustomResultUtils.GetApiResponse<string>(response, content);
         }
     }
 }
