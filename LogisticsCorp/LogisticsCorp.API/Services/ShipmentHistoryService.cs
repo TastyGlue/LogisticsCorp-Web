@@ -1,17 +1,14 @@
 ﻿using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
 
 namespace LogisticsCorp.API.Services
 {
     public class ShipmentHistoryService : IShipmentHistoryService
     {
         private readonly LogisticsCorpDbContext _context;
-        private readonly IMapper _mapper;
 
-        public ShipmentHistoryService(LogisticsCorpDbContext context, IMapper mapper)
+        public ShipmentHistoryService(LogisticsCorpDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -39,7 +36,7 @@ namespace LogisticsCorp.API.Services
 
         public async Task<CustomResult> Create(ShipmentHistoryDto dto)
         {
-            var history = _mapper.Map<ShipmentHistory>(dto);
+            var history = dto.Adapt<ShipmentHistory>();
             _context.ShipmentHistories.Add(history);
             await _context.SaveChangesAsync();
             return new CustomResult<ShipmentHistory>(history);

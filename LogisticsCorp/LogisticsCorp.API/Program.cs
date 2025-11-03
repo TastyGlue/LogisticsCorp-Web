@@ -24,6 +24,7 @@ public class Program
                 options.SuppressModelStateInvalidFilter = true;
             });
 
+        MapperConfig.ConfigureMappings();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 

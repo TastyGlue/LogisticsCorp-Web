@@ -1,17 +1,15 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
+﻿using LogisticsCorp.Data.Models;
+using LogisticsCorp.Shared.Models.DTOs;
 
 namespace LogisticsCorp.API.Services
 {
     public class PricingRuleService : IPricingRuleService
     {
         private readonly LogisticsCorpDbContext _context;
-        private readonly IMapper _mapper;
 
-        public PricingRuleService(LogisticsCorpDbContext context, IMapper mapper)
+        public PricingRuleService(LogisticsCorpDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -31,7 +29,7 @@ namespace LogisticsCorp.API.Services
 
         public async Task<CustomResult> Create(PricingRuleDto dto)
         {
-            var rule = _mapper.Map<PricingRule>(dto);
+            var rule = dto.Adapt<PricingRule>();
             _context.PricingRules.Add(rule);
             await _context.SaveChangesAsync();
             return new CustomResult<PricingRule>(rule);

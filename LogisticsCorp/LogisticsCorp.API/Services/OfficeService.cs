@@ -1,17 +1,15 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
+﻿using LogisticsCorp.Data.Models;
+using LogisticsCorp.Shared.Models.DTOs;
 
 namespace LogisticsCorp.API.Services
 {
     public class OfficeService : IOfficeService
     {
         private readonly LogisticsCorpDbContext _context;
-        private readonly IMapper _mapper;
 
-        public OfficeService(LogisticsCorpDbContext context, IMapper mapper)
+        public OfficeService(LogisticsCorpDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -41,7 +39,7 @@ namespace LogisticsCorp.API.Services
 
         public async Task<CustomResult> Create(OfficeDto dto)
         {
-            var office = _mapper.Map<Office>(dto);
+            var office = dto.Adapt<Office>();
             _context.Offices.Add(office);
             await _context.SaveChangesAsync();
             return new CustomResult<Office>(office);

@@ -54,8 +54,14 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddTransient<ITokenService, TokenService>();
-
+        services.AddScoped<AccountService, AccountService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IClientService, ClientService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<IOfficeService, OfficeService>();
+        services.AddScoped<IPricingRuleService, PricingRuleService>();
+        services.AddScoped<IShipmentService, ShipmentService>();
+        services.AddScoped<IShipmentHistoryService, ShipmentHistoryService>();
         services.AddScoped<IUserService, UserService>();
 
         return services;
