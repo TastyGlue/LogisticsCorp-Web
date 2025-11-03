@@ -10,6 +10,109 @@
     padding: 1rem;
 }
 
+/* Login Page */
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-card {
+    background-color: var(--bg-card) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    padding: 1.5rem;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--primary-yellow-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.login-header .logo-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--bg-dark) !important;
+}
+
+.login-title {
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.login-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+.login-field {
+    margin-bottom: 1.5rem;
+}
+
+.login-actions {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-button {
+    height: 48px;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    font-size: 1rem !important;
+}
+
+.login-divider {
+    margin: 1.5rem 0;
+}
+
+.login-footer {
+    text-align: center;
+}
+
+.footer-text {
+    color: var(--text-secondary) !important;
+}
+
+.footer-link {
+    color: var(--primary-yellow) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+.footer-link:hover {
+    text-decoration: underline !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .login-container {
+        max-width: 100%;
+    }
+
+    .login-card {
+        padding: 1rem;
+    }
+
+    .login-logo-placeholder {
+        width: 64px;
+        height: 64px;
+    }
+}
+
 /* ===== Main Layout (Authenticated Pages) ===== */
 
 /* Mobile Header */

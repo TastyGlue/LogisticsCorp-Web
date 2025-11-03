@@ -1,0 +1,53 @@
+@page "/login"
+@layout AnonymousLayout
+
+<div class="login-container">
+    <MudCard Class="login-card">
+        <MudCardContent>
+            <div class="login-header">
+                <div class="login-logo-placeholder">
+                    <MudText Typo="Typo.h6" Class="logo-text">LOGO</MudText>
+                </div>
+                <MudText Typo="Typo.h4" Class="login-title">Welcome Back</MudText>
+                <MudText Typo="Typo.body2" Class="login-subtitle">Sign in to continue to LogisticsCorp</MudText>
+            </div>
+
+            <EditForm Model="@Model" OnValidSubmit="@ValidSubmitHandler">
+                <FluentValidator />
+
+                <MudTextField @bind-Value="Model.Email"
+                              For="@(() => Model.Email)"
+                              Label="Email"
+                              Variant="Variant.Outlined"
+                              InputType="InputType.Email"
+                              Class="login-field" />
+
+                <MudTextField @bind-Value="Model.Password"
+                              For="@(() => Model.Password)"
+                              Label="Password"
+                              Variant="Variant.Outlined"
+                              InputType="InputType.Password"
+                              Class="login-field" />
+
+                <div class="login-actions">
+                    <MudButton Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Size="Size.Large"
+                               FullWidth="true"
+                               Class="login-button">
+                        Sign In
+                    </MudButton>
+                </div>
+            </EditForm>
+
+            <MudDivider Class="login-divider" />
+
+            <div class="login-footer">
+                <MudText Typo="Typo.body2" Class="footer-text">
+                    Don't have an account?
+                    <MudLink Href="/register" Class="footer-link">Sign Up</MudLink>
+                </MudText>
+            </div>
+        </MudCardContent>
+    </MudCard>
+</div>
