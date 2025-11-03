@@ -1,4 +1,5 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
+﻿using LogisticsCorp.Data.Models;
+using LogisticsCorp.Shared.Models.DTOs;
 using MapsterMapper;
 
 namespace LogisticsCorp.API.Services
@@ -6,12 +7,10 @@ namespace LogisticsCorp.API.Services
     public class EmployeeService : IEmployeeService
     {
         private readonly LogisticsCorpDbContext _context;
-        private readonly IMapper _mapper;
 
-        public EmployeeService(LogisticsCorpDbContext context, IMapper mapper)
+        public EmployeeService(LogisticsCorpDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -37,7 +36,7 @@ namespace LogisticsCorp.API.Services
 
         public async Task<CustomResult> Create(EmployeeDto dto)
         {
-            var employee = _mapper.Map<Employee>(dto);
+            var employee = dto.Adapt<Employee>();
             _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
             return new CustomResult<Employee>(employee);

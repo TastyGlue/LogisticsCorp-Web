@@ -1,17 +1,14 @@
 ﻿using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
 
 namespace LogisticsCorp.API.Services
 {
     public class AccountService : IAccountService
     {
         private readonly LogisticsCorpDbContext _context;
-        private readonly IMapper _mapper;
 
-        public AccountService(LogisticsCorpDbContext context, IMapper mapper)
+        public AccountService(LogisticsCorpDbContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -37,7 +34,7 @@ namespace LogisticsCorp.API.Services
 
         public async Task<CustomResult> Create(AccountDto dto)
         {
-            var account = _mapper.Map<Account>(dto);
+            var account = dto.Adapt<Account>();
             _context.Accounts.Add(account);
             await _context.SaveChangesAsync();
             return new CustomResult<Account>(account);
