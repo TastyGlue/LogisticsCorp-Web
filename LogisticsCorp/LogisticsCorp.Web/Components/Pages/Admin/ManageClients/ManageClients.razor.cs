@@ -33,7 +33,8 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients
             _isLoading = false;
         }
 
-        protected void CreateClient() { }
+        protected void CreateClient()
+            => NavigationManager.NavigateTo("/manage-clients/create"); 
         protected void EditClient() { }
 
         private bool QuickFilter(ClientViewModel client)
