@@ -61,30 +61,6 @@ namespace LogisticsCorp.Web.Components.Pages
             {
                 ErrorMessage = result.Error?.Message ?? "An unexpected error occurred during login.";
             }
-        }
-        /*private async Task SaveChanges()
-        {
-            if (Company is null)
-                return;
-
-            try
-            {
-                IsSaving = true;
-                var result = await ApiCompanyInfo.Update(Company);
-
-                if (result.Succeeded)
-                    Snackbar.Add("Changes saved successfully!", Severity.Success);
-                else
-                    Snackbar.Add("Failed to save changes.", Severity.Error);
-            }
-            catch (Exception ex)
-            {
-                Snackbar.Add($"Error: {ex.Message}", Severity.Error);
-            }
-            finally
-            {
-                IsSaving = false;
-            }
-        }*/
+        }       
     }
 }

@@ -32,10 +32,10 @@ namespace LogisticsCorp.API.Services
         public async Task<CustomResult> GetAll()
         {
             var shipments = await _context.Shipments
-                .Include(s => s.Sender)
-                .Include(s => s.Recipient)
-                .Include(s => s.RegisteredByEmployee)
-                .Include(s => s.Courier)
+                .Include(s => s.Sender).ThenInclude(x => x.User)
+                .Include(s => s.Recipient).ThenInclude(x => x.User)
+                .Include(s => s.RegisteredByEmployee).ThenInclude(x => x.User)
+                .Include(s => s.Courier).ThenInclude(x => x.User)
                 .Include(s => s.OriginOffice)
                 .Include(s => s.DestinationOffice)
                 .Include(s => s.History)

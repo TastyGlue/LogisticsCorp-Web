@@ -60,6 +60,8 @@ public static class ServiceCollectionExtensions
         builder.Services.AddTransient<IApiPricingRuleService, ApiPricingRuleService>();
         builder.Services.AddTransient<IApiShipmentService, ApiShipmentService>();
         builder.Services.AddTransient<IApiCompanyInfo, ApiCompanyInfoService>();
+        builder.Services.AddTransient<IApiUserShipmentService, ApiUserShipmentService>();
+
         return builder;
     }
 }
