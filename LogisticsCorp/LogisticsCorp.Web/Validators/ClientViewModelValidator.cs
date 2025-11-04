@@ -18,18 +18,18 @@ public class ClientViewModelValidator : AbstractValidator<ClientViewModel>
             .Matches(Constants.PHONE_FORMAT_REGEX).WithMessage(ValidationConstants.PHONE_NUMBER);
 
         RuleFor(x => x.Address)
+            .NotEmpty().WithMessage("Address is required")
             .MaximumLength(ValidationConstants.TEXT_FIELD_LARGE_MAX_LENGTH)
-            .WithMessage($"Address cannot exceed {ValidationConstants.TEXT_FIELD_LARGE_MAX_LENGTH} characters")
-            .When(x => !string.IsNullOrWhiteSpace(x.Address));
+            .WithMessage($"Address cannot exceed {ValidationConstants.TEXT_FIELD_LARGE_MAX_LENGTH} characters");
 
         RuleFor(x => x.City)
+            .NotEmpty().WithMessage("City is required")
             .MaximumLength(ValidationConstants.TEXT_FIELD_MAX_LENGTH)
-            .WithMessage($"City cannot exceed {ValidationConstants.TEXT_FIELD_MAX_LENGTH} characters")
-            .When(x => !string.IsNullOrWhiteSpace(x.City));
+            .WithMessage($"City cannot exceed {ValidationConstants.TEXT_FIELD_MAX_LENGTH} characters");
 
         RuleFor(x => x.PostalCode)
+            .NotEmpty().WithMessage("Postal Code is required")
             .MaximumLength(10)
-            .WithMessage("Postal code cannot exceed 10 characters")
-            .When(x => !string.IsNullOrWhiteSpace(x.PostalCode));
+            .WithMessage("Postal code cannot exceed 10 characters");
     }
 }

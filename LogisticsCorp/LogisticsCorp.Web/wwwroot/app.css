@@ -437,6 +437,13 @@
     grid-column: 1 / -1;
 }
 
+/* Required Field Asterisk */
+.required-field label::after {
+    content: " *";
+    color: #F87171;
+    font-weight: 600;
+}
+
 /* Checkbox Group */
 .checkbox-group {
     display: flex;

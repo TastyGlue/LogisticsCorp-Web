@@ -5,7 +5,7 @@
 <div class="form-container">
     <MudPaper Class="form-card" Elevation="0">
         <MudCardContent>
-            <EditForm Model="ViewModel" OnInvalidSubmit="ValidSubmitHandler">
+            <EditForm Model="ViewModel" OnValidSubmit="ValidSubmitHandler">
                 <FluentValidator />
 
                 <div class="form-section">
@@ -15,24 +15,21 @@
                                       For="@(() => ViewModel.User.FullName)"
                                       Label="Full Name"
                                       Variant="Variant.Outlined"
-                                      Required="true"
-                                      Class="form-field" />
+                                      Class="form-field required-field" />
 
                         <MudTextField @bind-Value="ViewModel.User.Email"
                                       For="@(() => ViewModel.User.Email)"
                                       Label="Email"
                                       Variant="Variant.Outlined"
                                       InputType="InputType.Email"
-                                      Required="true"
                                       Disabled="@(!IsCreate)"
-                                      Class="form-field" />
+                                      Class="form-field required-field" />
 
                         <MudTextField @bind-Value="ViewModel.User.PhoneNumber"
                                       For="@(() => ViewModel.User.PhoneNumber)"
                                       Label="Phone Number"
                                       Variant="Variant.Outlined"
-                                      Required="true"
-                                      Class="form-field" />
+                                      Class="form-field required-field" />
                     </div>
                 </div>
 
@@ -45,19 +42,19 @@
                                       For="@(() => ViewModel.Address)"
                                       Label="Address"
                                       Variant="Variant.Outlined"
-                                      Class="form-field full-width" />
+                                      Class="form-field full-width required-field" />
 
                         <MudTextField @bind-Value="ViewModel.City"
                                       For="@(() => ViewModel.City)"
                                       Label="City"
                                       Variant="Variant.Outlined"
-                                      Class="form-field" />
+                                      Class="form-field required-field" />
 
                         <MudTextField @bind-Value="ViewModel.PostalCode"
                                       For="@(() => ViewModel.PostalCode)"
                                       Label="Postal Code"
                                       Variant="Variant.Outlined"
-                                      Class="form-field" />
+                                      Class="form-field required-field" />
                     </div>
                 </div>
 
