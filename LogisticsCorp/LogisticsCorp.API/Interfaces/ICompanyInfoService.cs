@@ -2,7 +2,7 @@
 
 namespace LogisticsCorp.API.Interfaces
 {
-    public interface ICompanyInfo
+    public interface ICompanyInfoService
     {
         Task<CustomResult> Get();
         Task<CustomResult> Update(CompanyInfoDTO employeeDto);

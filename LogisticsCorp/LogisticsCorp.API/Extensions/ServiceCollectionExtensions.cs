@@ -64,6 +64,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IShipmentService, ShipmentService>();
         services.AddScoped<IShipmentHistoryService, ShipmentHistoryService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ICompanyInfoService, CompanyInfoService>();
 
         return services;
     }

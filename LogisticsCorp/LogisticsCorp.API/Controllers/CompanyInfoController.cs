@@ -7,13 +7,12 @@ namespace LogisticsCorp.API.Controllers
     [Route("api/[controller]")]
     public class CompanyInfoController
     {
-        private readonly ICompanyInfo _service;
+        private readonly ICompanyInfoService _service;
 
-        public CompanyInfoController(ICompanyInfo service)
+        public CompanyInfoController(ICompanyInfoService service)
         {
             _service = service;
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Get()

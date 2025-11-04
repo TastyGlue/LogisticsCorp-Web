@@ -2,7 +2,7 @@
 
 namespace LogisticsCorp.API.Services
 {
-    public class CompanyInfoService : ICompanyInfo
+    public class CompanyInfoService : ICompanyInfoService
     {
         private readonly LogisticsCorpDbContext _context;
 
