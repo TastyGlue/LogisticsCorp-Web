@@ -21,9 +21,9 @@ public class ShipmentDto
     public DateTime? PickedUpOn { get; set; }
     public DateTime? DeliveredOn { get; set; }
 
-    public ClientDto? Sender { get; set; } = default!;
-    public ClientDto? Recipient { get; set; } = default!;
-    public EmployeeDto? RegisteredByEmployee { get; set; } = default!;
+    public ClientDto Sender { get; set; } = default!;
+    public ClientDto Recipient { get; set; } = default!;
+    public EmployeeDto RegisteredByEmployee { get; set; } = default!;
     public EmployeeDto? Courier { get; set; } = default!;
     public OfficeDto? OriginOffice { get; set; } = default!;
     public OfficeDto? DestinationOffice { get; set; } = default!;
