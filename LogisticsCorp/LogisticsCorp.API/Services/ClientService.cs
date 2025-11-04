@@ -28,6 +28,7 @@ namespace LogisticsCorp.API.Services
         public async Task<CustomResult> GetAll()
         {
             var clients = await _context.Clients
+                .Include(c => c.User)
                 .Include(c => c.SentShipments)
                 .Include(c => c.ReceivedShipments)
                 .ToListAsync();
