@@ -1,0 +1,17 @@
+[
+
+  {
+    "Id": "30000000-0000-0000-0000-000000000001",
+    "Phone":  "+359 88 232 1123",
+    "Email": "company@logisticscorp.com",
+    "Adress": "Bulgaria, Sofia, ulitsa G.S. Rakovski, 78",
+    "MondaySchedule": "9:00 - 17:00",
+    "TuesdaySchedule": "9:00 - 17:00",
+    "WednesdaySchedule": "9:00 - 17:00",
+    "ThursdaySchedule": "9:00 - 17:00",
+    "FridaySchedule": "9:00 - 17:00",
+    "SaturdaySchedule": "11:00 - 15:00",
+    "SundaySchedule": "Day off!"
+
+  }
+]

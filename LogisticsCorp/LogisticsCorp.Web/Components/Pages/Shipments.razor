@@ -1,0 +1,31 @@
+﻿@inherits ExtendedComponentBase
+@page "/company-shipments"
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+
+    <MudDataGrid T="ShipmentDto"
+                 Items="shipments"
+                
+                 Filterable="true"
+                 FilterMode="DataGridFilterMode.ColumnFilterMenu"
+                 Hover="true"
+                 
+                 Elevation="1"
+                 Class="mb-4">
+
+   
+        <Columns>           
+            <PropertyColumn Property="x => x.DeliveredOn" Title="Email" Sortable="true" Filterable="true" />
+            <PropertyColumn Property="x => x.Status" Title="Status" Sortable="true" Filterable="true" />
+            <PropertyColumn Property="x => x.Sender.User.FullName" Title="Sender Name" Sortable="true" Filterable="true" />
+            <PropertyColumn Property="x => x.Recipient.User.FullName" Title="Recipient Name" Sortable="true" Filterable="true" />
+        </Columns>
+
+        <NoRecordsContent>
+            <MudText>No clients to display.</MudText>
+        </NoRecordsContent>
+
+        
+    </MudDataGrid>
+</MudPaper>
