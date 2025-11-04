@@ -22,7 +22,8 @@ public class TokenService : ITokenService
         {
             new(Claims.USER_ID, user.Id.ToString()),
             new(Claims.FULL_NAME, user.FullName),
-            new(Claims.EMAIL, user.Email!)
+            new(Claims.EMAIL, user.Email!),
+            new(Claims.USERNAME, user.UserName!),
         };
 
         foreach (var role in user.Roles)

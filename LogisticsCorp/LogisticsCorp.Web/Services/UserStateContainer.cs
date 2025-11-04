@@ -19,5 +19,7 @@ public class UserStateContainer
 
     public string FullName { get; set; } = default!;
 
-    public string[] Roles { get; set; } = [];
+    public string Role { get; set; } = default!;
+
+    public Guid AccountId { get; set; }
 }
