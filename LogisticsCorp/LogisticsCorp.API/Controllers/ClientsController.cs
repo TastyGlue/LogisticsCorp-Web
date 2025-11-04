@@ -32,6 +32,7 @@ namespace LogisticsCorp.API.Controllers
         public async Task<IActionResult> Create([FromBody] ClientDto dto)
         {
             var user = dto.User.Adapt<User>();
+            user.UserName = user.Email + Guid.NewGuid().ToString();
             var client = dto.Adapt<Client>();
             var result = await _service.Create(user, client);
             return ApiResponseFactory.AdaptAndCreateResponse<Client, ClientDto>(result);
