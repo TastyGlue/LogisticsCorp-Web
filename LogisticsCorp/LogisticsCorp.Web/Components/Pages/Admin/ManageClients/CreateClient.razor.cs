@@ -1,15 +1,10 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-using LogisticsCorp.Web.Models.ViewModels;
-using LogisticsCorp.Web.Services.ApiServices.Interfaces;
-using Microsoft.AspNetCore.Components;
-
-namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients
+﻿namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients
 {
     public partial class CreateClient : ExtendedComponentBase
     {
         [Inject] protected IApiClientService ApiClientService { get; set; } = default!;
 
-        protected ClientViewModel ViewModel { get; set; } = new();
+        protected ClientViewModel ViewModel { get; set; } = new() { User = new() };
 
         protected async Task ValidSubmitHandler()
         {

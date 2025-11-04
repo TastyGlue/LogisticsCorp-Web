@@ -1,7 +1,4 @@
-﻿using LogisticsCorp.Web.Models.ViewModels;
-using MudBlazor;
-
-namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients;
+﻿namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients;
 
 public partial class Form : ExtendedComponentBase
 {
