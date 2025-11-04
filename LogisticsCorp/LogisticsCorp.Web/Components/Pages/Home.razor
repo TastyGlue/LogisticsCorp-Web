@@ -1,8 +1,115 @@
 ﻿@page "/"
 @inherits ExtendedComponentBase
 
-<PageTitle>@PageStateService.PageTitle</PageTitle>
+<MudLayout>
+@* 
+    <!-- NAVBAR -->
+    <MudAppBar Color="Color.Primary" Elevation="4">
+        <MudText Typo="Typo.h6" Class="ml-2">FastShip</MudText>
+        <MudSpacer />
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" StartIcon="@Icons.Material.Filled.LocalShipping">Book</MudButton>
+    </MudAppBar>
+ *@
+    <MudMainContent>
+        <MudContainer Class="pa-0">
 
-<h1>Hello, world!</h1>
+            <!-- HERO SECTION -->
+            <MudPaper Class="d-flex flex-column align-center justify-center text-center pa-12" 
+                      Style="background: linear-gradient(20deg, #FFD700, #f4bb74); color:white; min-height:78vh;">
+                <MudText Style="color: #424242;" Typo="Typo.h2" Class="mb-2 fw-bold">Fast, Reliable & Affordable Deliveries</MudText>
+                <MudText Style="color: #424242;" Typo="Typo.subtitle1" Class="mb-6">
+                    Delivering packages, groceries, and more — anytime, anywhere.
+                </MudText>
 
-Welcome to your new app.
+                <div>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large" Class="mx-2">
+                        Book a Delivery
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Size="Size.Large" Class="mx-2">
+                        Learn More
+                    </MudButton>
+                </div>
+            </MudPaper>
+
+            <!-- SERVICES SECTION -->
+            <MudContainer Class="mt-12 mb-12">
+                <MudText Typo="Typo.h3" Align="Align.Center" Class="mb-8">Our Services</MudText>
+                <MudGrid >
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudPaper Class="pa-6 text-center elevation-3 rounded-lg">
+                            <MudIcon Icon="@Icons.Material.Filled.LocalShipping" Size="Size.Large" Color="Color.Primary" />
+                            <MudText Typo="Typo.h6" Class="mt-2">Express Delivery</MudText>
+                            <MudText Typo="Typo.body2">
+                                Same-day and next-day delivery with real-time tracking.
+                            </MudText>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudPaper Class="pa-6 text-center elevation-3 rounded-lg">
+                            <MudIcon Icon="@Icons.Material.Filled.ShoppingCart" Size="Size.Large" Color="Color.Primary" />
+                            <MudText Typo="Typo.h6" Class="mt-2">E-commerce Delivery</MudText>
+                            <MudText Typo="Typo.body2">
+                                Perfect for online stores — reliable and fast parcel transport.
+                            </MudText>
+                        </MudPaper>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudPaper Class="pa-6 text-center elevation-3 rounded-lg">
+                            <MudIcon Icon="@Icons.Material.Filled.LocationOn" Size="Size.Large" Color="Color.Primary" />
+                            <MudText Typo="Typo.h6" Class="mt-2">Local Courier</MudText>
+                            <MudText Typo="Typo.body2">
+                                Quick and affordable local delivery for businesses and individuals.
+                            </MudText>
+                        </MudPaper>
+                    </MudItem>
+                </MudGrid>
+            </MudContainer>
+
+            <!-- WHY CHOOSE US -->
+            <MudPaper Class="py-12" Style="background-color:#f5f5f5;">
+                <MudContainer>
+                    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-8">Why Choose Us?</MudText>
+
+                    <MudGrid Gutter="3" AlignItems="Center">
+                        <MudItem xs="12" md="6">
+                            <!-- NOTE: specify generic type T here to avoid the inference error -->
+                            <MudList T="string" Dense="true">
+                                <MudListItem T="string">
+                                    <MudListItemIcon><MudIcon Icon="@Icons.Material.Filled.Speed" Color="Color.Primary" /></MudListItemIcon>
+                                    <MudListItemText>Lightning-fast delivery times</MudListItemText>
+                                </MudListItem>
+
+                                <MudListItem T="string">
+                                    <MudListItemIcon><MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Color="Color.Primary" /></MudListItemIcon>
+                                    <MudListItemText>Trusted by 1000+ customers</MudListItemText>
+                                </MudListItem>
+
+                                <MudListItem T="string">
+                                    <MudListItemIcon><MudIcon Icon="@Icons.Material.Filled.SupportAgent" Color="Color.Primary" /></MudListItemIcon>
+                                    <MudListItemText>24/7 customer support</MudListItemText>
+                                </MudListItem>
+
+                                <MudListItem T="string">
+                                    <MudListItemIcon><MudIcon Icon="@Icons.Material.Filled.AttachMoney" Color="Color.Primary" /></MudListItemIcon>
+                                    <MudListItemText>Competitive pricing for every budget</MudListItemText>
+                                </MudListItem>
+                            </MudList>
+                        </MudItem>
+                    </MudGrid>
+                </MudContainer>
+            </MudPaper>
+            <br />
+            <br />
+            <!-- CTA SECTION -->
+            <MudPaper Class="text-center pa-12" Style="background: linear-gradient(20deg, #FFD700, #f4bb74); color:white;">
+                <MudText Style="color: #424242;" Typo="Typo.h4" Class="mb-4">Ready to ship your next delivery?</MudText>
+                <MudButton Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large">
+                    Get Started Now
+                </MudButton>
+            </MudPaper>
+
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
