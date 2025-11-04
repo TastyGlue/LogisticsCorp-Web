@@ -47,6 +47,7 @@ public static class ServiceCollectionExtensions
         services.AddTransient<IDataSeeder, ShipmentSeeder>();
         services.AddTransient<IDataSeeder, ShipmentHistorySeeder>();
         services.AddTransient<IDataSeeder, AdminSeeder>();
+        services.AddTransient<IDataSeeder, CompanyInfoSeeder>();
 
         return services;
     }

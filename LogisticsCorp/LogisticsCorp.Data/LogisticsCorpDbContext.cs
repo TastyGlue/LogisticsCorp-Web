@@ -13,6 +13,7 @@ public class LogisticsCorpDbContext : IdentityDbContext<User, IdentityRole<Guid>
     public DbSet<PricingRule> PricingRules { get; set; }
     public DbSet<Office> Offices { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<CompanyInfo> CompanyInfo { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
