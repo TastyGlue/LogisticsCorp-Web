@@ -71,6 +71,11 @@
                 </div>
             </EditForm>
 
+            @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+            {
+                <MudAlert Severity="Severity.Error">@ErrorMessage</MudAlert>
+            }
+
             <MudDivider Class="login-divider" />
 
             <div class="login-footer">

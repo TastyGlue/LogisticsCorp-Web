@@ -44,7 +44,7 @@ public class AuthController : ControllerBase
     {
         var user = new User()
         {
-            UserName = dto.Email,
+            UserName = dto.Email + Guid.NewGuid().ToString(),
             Email = dto.Email,
             FullName = dto.FullName,
             IsActive = true

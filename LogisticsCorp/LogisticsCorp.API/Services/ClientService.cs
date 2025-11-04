@@ -74,41 +74,17 @@
             try
             {
                 await _context.SaveChangesAsync();
+
+                newUser.AccountId = client.Id;
+                await _userManager.UpdateAsync(newUser);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await _userManager.DeleteAsync(newUser);
                 throw;
             }
 
             return new CustomResult<Client>(client);
-
-            //var client = dto.Adapt<Client>();
-            //client.User.SecurityStamp = Guid.NewGuid().ToString(); // Ensure unique SecurityStamp
-            //_context.Clients.Add(client);
-            //await _context.SaveChangesAsync();
-
-            //// After successful creation, assign user to CLIENT role
-            //var roleResult = await _userService.AddUserToRole(client.UserId, SeedConstants.ROLE_CLIENT_NAME, overwriteExisting: false);
-            //if (!roleResult.Succeeded)
-            //{
-            //    _context.Clients.Remove(client);
-            //    throw new Exception($"Failed to assign {SeedConstants.ROLE_CLIENT_NAME} role to user '{client.UserId}': {roleResult.Error?.Message}");
-            //}
-
-            //if (!string.IsNullOrWhiteSpace(password))
-            //{
-            //    var user = await _userManager.FindByIdAsync(client.UserId.ToString());
-            //    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            //    var resetResult = await _userManager.ResetPasswordAsync(user, token, Constants.DEFAULT_PASSWORD);
-            //    if (!resetResult.Succeeded)
-            //    {
-            //        var errors = string.Join(", ", resetResult.Errors.Select(e => e.Description));
-            //        throw new Exception($"Failed to reset password for user '{user.UserName}': {errors}");
-            //    }
-            //}
-
-            //return new CustomResult<Client>(client);
         }
 
         public async Task<CustomResult> Update(Guid id, ClientDto dto)
