@@ -49,8 +49,8 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
             if (string.IsNullOrWhiteSpace(_searchString))
                 return true;
 
-            return (employee.FullName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (employee.Email?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            return (employee.User.FullName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+                || (employee.User.Email?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
                 || (employee.EmployeeType?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
                 || (employee.OfficeName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
         }

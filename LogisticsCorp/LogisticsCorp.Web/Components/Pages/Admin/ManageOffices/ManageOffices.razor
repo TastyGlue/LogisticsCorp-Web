@@ -1,0 +1,65 @@
+﻿@page "/manage-offices"
+@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+
+    <MudDataGrid T="OfficeViewModel"
+                 Items="_offices"
+                 @bind-SelectedItem="_selectedOffice"
+                 Filterable="true"
+                 FilterMode="DataGridFilterMode.Simple"
+                 QuickFilter="QuickFilter"
+                 Hover="true"
+                 Loading="_isLoading"
+                 Elevation="1"
+                 Class="mb-4">
+
+        <ToolBarContent>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Add"
+                       OnClick="CreateOffice">
+                Create
+            </MudButton>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Warning"
+                       StartIcon="@Icons.Material.Filled.Edit"
+                       Disabled="_selectedOffice == null"
+                       OnClick="EditOffice"
+                       Class="ml-2">
+                Edit
+            </MudButton>
+
+            <MudSpacer />
+
+            <MudTextField @bind-Value="_searchString"
+                          Placeholder="Search..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Immediate="true"
+                          Class="ml-2" />
+        </ToolBarContent>
+
+        <Columns>
+            <PropertyColumn Property="x => x.Name" Title="Name" Sortable="true" />
+            <PropertyColumn Property="x => x.City" Title="City" Sortable="true" />
+            <PropertyColumn Property="x => x.Address" Title="Address" Sortable="true" />
+            <PropertyColumn Property="x => x.PostalCode" Title="Postal Code" Sortable="true" />
+            <PropertyColumn Property="x => x.PhoneNumber" Title="Phone" Sortable="true" />
+            <PropertyColumn Property="x => x.Email" Title="Email" Sortable="true" />
+            <PropertyColumn Property="x => x.IsActive" Title="Active" Sortable="true" />
+        </Columns>
+
+        <NoRecordsContent>
+            <MudText>No offices to display.</MudText>
+        </NoRecordsContent>
+
+        <PagerContent>
+            <MudDataGridPager T="OfficeViewModel" />
+        </PagerContent>
+    </MudDataGrid>
+</MudPaper>
