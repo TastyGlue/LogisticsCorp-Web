@@ -24,4 +24,6 @@ public static class ErrorCodes
     public const string API_UNEXPECTED_ERROR = "API_100_500";
     public const string API_VALIDATION_ERROR = "API_110_400";
     public const string API_INVALID_ARGUMENT = "API_120_400";
+
+    public const string VALIDATION_ERROR = "VALIDATION_100_400";
 }

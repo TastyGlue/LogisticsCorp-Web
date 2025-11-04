@@ -1,4 +1,4 @@
-namespace LogisticsCorp.Web.Components.Pages;
+namespace LogisticsCorp.Web.Components.Pages.Account;
 
 public partial class Login : ExtendedComponentBase
 {

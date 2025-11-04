@@ -47,6 +47,7 @@ public static class ServiceCollectionExtensions
     private static WebApplicationBuilder RegisterValidators(this WebApplicationBuilder builder)
     {
         builder.Services.AddSingleton<IValidator<LoginModel>, LoginModelValidator>();
+        builder.Services.AddSingleton<IValidator<RegisterViewModel>, RegisterViewModelValidator>();
 
         return builder;
     }

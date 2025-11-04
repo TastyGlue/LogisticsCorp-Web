@@ -19,7 +19,7 @@ global using LogisticsCorp.Web.Components.Abstract;
 global using LogisticsCorp.Shared.Constants;
 global using LogisticsCorp.Shared.Enums;
 global using LogisticsCorp.Shared.Models;
-//global using LogisticsCorp.Shared.Models.DTOs;
+global using LogisticsCorp.Shared.Models.DTOs;
 global using LogisticsCorp.Shared.Utils;
 //global using LogisticsCorp.Shared.Attributes;
 global using MudBlazor;

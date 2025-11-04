@@ -1,15 +1,16 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
-
-namespace LogisticsCorp.API.Services
+﻿namespace LogisticsCorp.API.Services
 {
     public class ClientService : IClientService
     {
         private readonly LogisticsCorpDbContext _context;
+        private readonly IUserService _userService;
+        private readonly UserManager<User> _userManager;
 
-        public ClientService(LogisticsCorpDbContext context)
+        public ClientService(LogisticsCorpDbContext context, IUserService userService, UserManager<User> userManager)
         {
             _context = context;
+            _userService = userService;
+            _userManager = userManager;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -35,12 +36,79 @@ namespace LogisticsCorp.API.Services
             return new CustomResult<IEnumerable<Client>>(clients);
         }
 
-        public async Task<CustomResult> Create(ClientDto dto)
+        public async Task<CustomResult> Create(User user, Client client, string? password = null)
         {
-            var client = dto.Adapt<Client>();
-            _context.Clients.Add(client);
-            await _context.SaveChangesAsync();
+            // Create User
+            var createUser = await _userManager.CreateAsync(user, password ?? Constants.DEFAULT_PASSWORD);
+            if (!createUser.Succeeded)
+            {
+                var errors = string.Join(", ", createUser.Errors.Select(e => e.Description));
+                return new(new ErrorResult(errors, ErrorCodes.USER_CREATE_FAILED));
+            }
+
+            // Get new created User
+            var newUser = await _userManager.FindByEmailAsync(user.Email!);
+
+            // Add User to CLIENT role
+            var addToRoleResult = await _userService.AddUserToRole(newUser!.Id, SeedConstants.ROLE_CLIENT_NAME, overwriteExisting: true);
+            if (!addToRoleResult.Succeeded)
+            {
+                await _userManager.DeleteAsync(newUser);
+                return addToRoleResult;
+            }
+
+            // Set new User's password
+            var token = await _userManager.GeneratePasswordResetTokenAsync(newUser!);
+            var resetResult = await _userManager.ResetPasswordAsync(newUser!, token, password ?? Constants.DEFAULT_PASSWORD);
+            if (!resetResult.Succeeded)
+            {
+                var errors = string.Join(", ", resetResult.Errors.Select(e => e.Description));
+                Log.Error($"Failed to reset password for user '{user.UserName}': {errors}");
+            }
+
+            // Create Client linked to the new User
+            client.UserId = newUser!.Id;
+            client.User = null!; // Avoid EF Core trying to insert the User again
+            await _context.Clients.AddAsync(client);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                await _userManager.DeleteAsync(newUser);
+                throw;
+            }
+
             return new CustomResult<Client>(client);
+
+            //var client = dto.Adapt<Client>();
+            //client.User.SecurityStamp = Guid.NewGuid().ToString(); // Ensure unique SecurityStamp
+            //_context.Clients.Add(client);
+            //await _context.SaveChangesAsync();
+
+            //// After successful creation, assign user to CLIENT role
+            //var roleResult = await _userService.AddUserToRole(client.UserId, SeedConstants.ROLE_CLIENT_NAME, overwriteExisting: false);
+            //if (!roleResult.Succeeded)
+            //{
+            //    _context.Clients.Remove(client);
+            //    throw new Exception($"Failed to assign {SeedConstants.ROLE_CLIENT_NAME} role to user '{client.UserId}': {roleResult.Error?.Message}");
+            //}
+
+            //if (!string.IsNullOrWhiteSpace(password))
+            //{
+            //    var user = await _userManager.FindByIdAsync(client.UserId.ToString());
+            //    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            //    var resetResult = await _userManager.ResetPasswordAsync(user, token, Constants.DEFAULT_PASSWORD);
+            //    if (!resetResult.Succeeded)
+            //    {
+            //        var errors = string.Join(", ", resetResult.Errors.Select(e => e.Description));
+            //        throw new Exception($"Failed to reset password for user '{user.UserName}': {errors}");
+            //    }
+            //}
+
+            //return new CustomResult<Client>(client);
         }
 
         public async Task<CustomResult> Update(Guid id, ClientDto dto)
