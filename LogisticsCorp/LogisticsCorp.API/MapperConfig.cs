@@ -22,6 +22,12 @@ namespace LogisticsCorp.API
             TypeAdapterConfig<Employee, EmployeeDto>.NewConfig()
                 .MaxDepth(3);
 
+            TypeAdapterConfig<Shipment, ShipmentDto>.NewConfig()
+                .MaxDepth(4);
+
+            TypeAdapterConfig<Office, OfficeDto>.NewConfig()
+                .MaxDepth(4);
+
             TypeAdapterConfig<AccountDto, Account>.NewConfig()
                 .Include<ClientDto, Client>()
                 .Include<EmployeeDto, Employee>();
