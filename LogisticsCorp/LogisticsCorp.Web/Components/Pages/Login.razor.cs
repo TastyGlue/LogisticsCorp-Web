@@ -14,13 +14,20 @@ public partial class Login : ExtendedComponentBase
         ErrorMessage = string.Empty;
 
         LoaderService.ToggleLoading(true);
-        await Task.Delay(3500);
+
         var result = await ApiAuthService.LoginWithCredentials(Model.Adapt<LoginCredentials>());
+
         LoaderService.ToggleLoading(false);
 
         if (result.Succeeded)
         {
             // Store tokens in local storage and go to Home page
+            var tokens = result.Value!;
+
+            await LocalStorage.SetAsync(Constants.ACCESS_TOKEN_KEY, tokens.AccessToken);
+            await LocalStorage.SetAsync(Constants.REFRESH_TOKEN_KEY, tokens.RefreshToken);
+
+            NavigationManager.NavigateTo("/", true);
         }
         else
         {

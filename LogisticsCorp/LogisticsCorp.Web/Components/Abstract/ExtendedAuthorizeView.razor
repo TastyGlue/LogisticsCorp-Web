@@ -14,8 +14,8 @@
 
     protected override void OnInitialized()
     {
-        var userRoles = UserStateContainer.Roles;
+        var userRole = UserStateContainer.Role;
 
-        _isAnyRole = userRoles.Any(x => Roles.Contains(x));
+        _isAnyRole = Roles.Contains(userRole);
     }
 }

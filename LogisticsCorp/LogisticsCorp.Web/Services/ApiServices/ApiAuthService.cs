@@ -20,4 +20,16 @@ public class ApiAuthService : IApiAuthService
 
         return CustomResultUtils.GetApiResponse<TokensResponse>(response, content);
     }
+
+    public async Task<CustomResult<TokensResponse>> RefreshToken(RefreshTokenRequest request)
+    {
+        var client = _httpClientService.CreateApiClient();
+
+        string apiEndpoint = "api/auth/refresh";
+
+        var response = await client.PostAsJsonAsync(apiEndpoint, request);
+        var content = await response.Content.ReadAsStringAsync();
+
+        return CustomResultUtils.GetApiResponse<TokensResponse>(response, content);
+    }
 }
