@@ -15,7 +15,7 @@
         <MudTextField @bind-Value="ViewModel.PostalCode" Label="Postal Code" />
 
         <MudInputLabel>@("Is Active")</MudInputLabel>
-        <MudCheckBox @bind-Value="ViewModel.IsActive" Color="Color.Primary" />
+        <MudCheckBox @bind-Value="ViewModel.User.IsActive" Color="Color.Primary" />
 
         <MudButton OnClick="@SubmitHandler" Variant="Variant.Filled" Color="Color.Primary" Class="mt-4">
             Submit
