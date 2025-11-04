@@ -29,6 +29,7 @@ namespace LogisticsCorp.API.Services
         {
             var employees = await _context.Employees
                 .Include(e => e.Office)
+                .Include(e => e.User)
                 .ToListAsync();
 
             return new CustomResult<IEnumerable<Employee>>(employees);

@@ -1,0 +1,63 @@
+﻿@page "/manage-clients"
+@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+
+    <MudDataGrid T="ClientViewModel"
+                 Items="_clients"
+                 @bind-SelectedItem="_selectedClient"
+                 Filterable="true"
+                 FilterMode="DataGridFilterMode.Simple"
+                 QuickFilter="QuickFilter"
+                 Hover="true"
+                 Loading="_isLoading"
+                 Elevation="1"
+                 Class="mb-4">
+
+        <ToolBarContent>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Add"
+                       OnClick="CreateClient">
+                Create
+            </MudButton>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Warning"
+                       StartIcon="@Icons.Material.Filled.Edit"
+                       Disabled="_selectedClient == null"
+                       OnClick="EditClient"
+                       Class="ml-2">
+                Edit
+            </MudButton>
+
+            <MudSpacer />
+
+            <MudTextField @bind-Value="_searchString"
+                          Placeholder="Search..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Immediate="true"
+                          Class="ml-2" />
+        </ToolBarContent>
+
+        <Columns>
+            <PropertyColumn Property="x => x.User.FullName" Title="Full Name" Sortable="true" />
+            <PropertyColumn Property="x => x.User.Email" Title="Email" Sortable="true" />
+            <PropertyColumn Property="x => x.Address" Title="Address" Sortable="true" />
+            <PropertyColumn Property="x => x.City" Title="City" Sortable="true" />
+            <PropertyColumn Property="x => x.PostalCode" Title="Postal Code" Sortable="true" />
+        </Columns>
+
+        <NoRecordsContent>
+            <MudText>No clients to display.</MudText>
+        </NoRecordsContent>
+
+        <PagerContent>
+            <MudDataGridPager T="ClientViewModel" />
+        </PagerContent>
+    </MudDataGrid>
+</MudPaper>

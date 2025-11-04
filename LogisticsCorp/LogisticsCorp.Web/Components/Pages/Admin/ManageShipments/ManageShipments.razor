@@ -1,0 +1,65 @@
+﻿@page "/manage-shipments"
+@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+
+    <MudDataGrid T="ShipmentViewModel"
+                 Items="_shipments"
+                 @bind-SelectedItem="_selectedShipment"
+                 Filterable="true"
+                 FilterMode="DataGridFilterMode.Simple"
+                 QuickFilter="QuickFilter"
+                 Hover="true"
+                 Loading="_isLoading"
+                 Elevation="1"
+                 Class="mb-4">
+
+        <ToolBarContent>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Add"
+                       OnClick="CreateShipment">
+                Create
+            </MudButton>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Warning"
+                       StartIcon="@Icons.Material.Filled.Edit"
+                       Disabled="_selectedShipment == null"
+                       OnClick="EditShipment"
+                       Class="ml-2">
+                Edit
+            </MudButton>
+
+            <MudSpacer />
+
+            <MudTextField @bind-Value="_searchString"
+                          Placeholder="Search..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Immediate="true"
+                          Class="ml-2" />
+        </ToolBarContent>
+
+        <Columns>
+            <PropertyColumn Property="x => x.Sender.User.FullName" Title="Sender" Sortable="true" />
+            <PropertyColumn Property="x => x.Recipient.User.FullName" Title="Recipient" Sortable="true" />
+            <PropertyColumn Property="x => x.DeliveryType" Title="Delivery Type" Sortable="true" />
+            <PropertyColumn Property="x => x.Weight" Title="Weight (kg)" Sortable="true" />
+            <PropertyColumn Property="x => x.Price" Title="Price" Sortable="true" />
+            <PropertyColumn Property="x => x.Status" Title="Status" Sortable="true" />
+            <PropertyColumn Property="x => x.RegisteredOn" Title="Registered On" Sortable="true" />
+        </Columns>
+
+        <NoRecordsContent>
+            <MudText>No shipments to display.</MudText>
+        </NoRecordsContent>
+
+        <PagerContent>
+            <MudDataGridPager T="ShipmentViewModel" />
+        </PagerContent>
+    </MudDataGrid>
+</MudPaper>

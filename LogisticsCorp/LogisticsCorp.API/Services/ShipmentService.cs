@@ -14,10 +14,10 @@ namespace LogisticsCorp.API.Services
         public async Task<CustomResult> Get(Guid id)
         {
             var shipment = await _context.Shipments
-                .Include(s => s.Sender)
-                .Include(s => s.Recipient)
-                .Include(s => s.RegisteredByEmployee)
-                .Include(s => s.Courier)
+                .Include(s => s.Sender).ThenInclude(x => x.User)
+                .Include(s => s.Recipient).ThenInclude(x => x.User)
+                .Include(s => s.RegisteredByEmployee).ThenInclude(x => x.User)
+                .Include(s => s.Courier).ThenInclude(x => x.User)
                 .Include(s => s.OriginOffice)
                 .Include(s => s.DestinationOffice)
                 .Include(s => s.History)
@@ -26,23 +26,26 @@ namespace LogisticsCorp.API.Services
             if (shipment == null)
                 return new CustomResult(new ErrorResult($"Shipment with ID {id} not found.", ErrorCodes.ENTITY_NOT_FOUND));
 
-            return new CustomResult<Shipment>(shipment);
+            var shipmentDto = shipment.Adapt<ShipmentDto>();
+            return new CustomResult<ShipmentDto>(shipmentDto);
         }
 
         public async Task<CustomResult> GetAll()
         {
             var shipments = await _context.Shipments
-                .Include(s => s.Sender)
-                .Include(s => s.Recipient)
-                .Include(s => s.RegisteredByEmployee)
-                .Include(s => s.Courier)
+                .Include(s => s.Sender).ThenInclude(x => x.User)
+                .Include(s => s.Recipient).ThenInclude(x => x.User)
+                .Include(s => s.RegisteredByEmployee).ThenInclude(x => x.User)
+                .Include(s => s.Courier).ThenInclude(x => x.User)
                 .Include(s => s.OriginOffice)
                 .Include(s => s.DestinationOffice)
                 .Include(s => s.History)
                 .ToListAsync();
 
-            return new CustomResult<IEnumerable<Shipment>>(shipments);
+            var shipmentDtos = shipments.Adapt<List<ShipmentDto>>();
+            return new CustomResult<IEnumerable<ShipmentDto>>(shipmentDtos);
         }
+
 
         public async Task<CustomResult> Create(ShipmentDto dto)
         {

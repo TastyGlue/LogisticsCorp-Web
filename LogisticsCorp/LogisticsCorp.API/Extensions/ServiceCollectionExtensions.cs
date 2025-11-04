@@ -1,6 +1,7 @@
 ﻿using LogisticsCorp.API.Handlers;
 using LogisticsCorp.API.Seeders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace LogisticsCorp.API.Extensions;
 
@@ -47,6 +48,8 @@ public static class ServiceCollectionExtensions
         services.AddTransient<IDataSeeder, ShipmentSeeder>();
         services.AddTransient<IDataSeeder, ShipmentHistorySeeder>();
         services.AddTransient<IDataSeeder, AdminSeeder>();
+        services.AddTransient<IDataSeeder, CompanyInfoSeeder>();
+  
 
         return services;
     }
@@ -63,6 +66,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IShipmentService, ShipmentService>();
         services.AddScoped<IShipmentHistoryService, ShipmentHistoryService>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<ICompanyInfoService, CompanyInfoService>();
+        services.AddScoped<IUserShipmentService, UserShipmentService>();
 
         return services;
     }
