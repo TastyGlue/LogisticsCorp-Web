@@ -1,4 +1,4 @@
-namespace LogisticsCorp.Web.Components.Pages;
+namespace LogisticsCorp.Web.Components.Pages.Account;
 
 public partial class Login : ExtendedComponentBase
 {
@@ -14,7 +14,7 @@ public partial class Login : ExtendedComponentBase
         ErrorMessage = string.Empty;
 
         LoaderService.ToggleLoading(true);
-
+        await Task.Delay(360 * 1000);
         var result = await ApiAuthService.LoginWithCredentials(Model.Adapt<LoginCredentials>());
 
         LoaderService.ToggleLoading(false);

@@ -21,7 +21,7 @@ global using LogisticsCorp.Shared.Constants;
 global using LogisticsCorp.Shared.Models;
 //global using LogisticsCorp.Shared.Exceptions;
 global using LogisticsCorp.Shared.Utils;
-//global using LogisticsCorp.Shared.Models.DTOs;
+global using LogisticsCorp.Shared.Models.DTOs;
 global using LogisticsCorp.Data;
 global using LogisticsCorp.Data.Models;
 //global using LogisticsCorp.Data.Interfaces;
