@@ -18,7 +18,7 @@ public class TokenService
         {
             if (navigateOnMissingToken)
             {
-                _navigationManager.NavigateTo("/login", forceLoad: true);
+                _navigationManager.NavigateTo("/account/login", forceLoad: true);
             }
 
             return string.Empty;
