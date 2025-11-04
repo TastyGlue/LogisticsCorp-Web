@@ -20,9 +20,8 @@
                 </div>
                 <MudText Typo="Typo.body1" Class="mobile-company-name">LogisticsCorp</MudText>
             </div>
-            <div class="mobile-user-profile">
-                <MudAvatar Color="Color.Primary" Size="Size.Small" Class="user-avatar-small">JD</MudAvatar>
-            </div>
+
+            <UserProfile IsMobile="true" />
         </div>
 
         @* Sidebar Drawer *@
@@ -43,13 +42,8 @@
                     <MudText Typo="Typo.h2" Class="page-title">@PageStateService.PageTitle</MudText>
                     <MudText Typo="Typo.body2" Class="page-subtitle">@PageStateService.PageSubtitle</MudText>
                 </div>
-                <div class="user-profile-section">
-                    <div class="user-info">
-                        <MudText Typo="Typo.body1" Class="user-name">John Doe</MudText>
-                        <MudText Typo="Typo.caption" Class="user-role">Office Staff</MudText>
-                    </div>
-                    <MudAvatar Color="Color.Primary" Size="Size.Medium" Class="user-avatar">JD</MudAvatar>
-                </div>
+
+                <UserProfile />
             </div>
 
             @* Page Content *@

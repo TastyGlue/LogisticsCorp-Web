@@ -75,6 +75,15 @@ public partial class MainLayout : LayoutComponentBase, IDisposable
             UserStateContainer.AccountId = new Guid(User.FindFirstValue(Claims.ACCOUNT_ID)!);
         }
 
+        if (UserStateContainer.EmployeeType is null)
+        {
+            var employeeTypeClaim = User.FindFirstValue(Claims.EMPLOYEE_TYPE);
+            EmployeeType? employeeType = employeeTypeClaim is not null
+                ? Enum.Parse<EmployeeType>(employeeTypeClaim, true)
+                : null;
+            UserStateContainer.EmployeeType = employeeType;
+        }
+
         UserStateContainer.IsPopulated = true;
     }
 
