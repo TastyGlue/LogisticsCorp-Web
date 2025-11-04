@@ -1,16 +1,16 @@
-﻿using LogisticsCorp.Data.Models;
-using LogisticsCorp.Shared.Models.DTOs;
-using MapsterMapper;
-
-namespace LogisticsCorp.API.Services
+﻿namespace LogisticsCorp.API.Services
 {
     public class EmployeeService : IEmployeeService
     {
         private readonly LogisticsCorpDbContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserService _userService;
 
-        public EmployeeService(LogisticsCorpDbContext context)
+        public EmployeeService(LogisticsCorpDbContext context, IUserService userService, UserManager<User> userManager)
         {
             _context = context;
+            _userService = userService;
+            _userManager = userManager;
         }
 
         public async Task<CustomResult> Get(Guid id)
@@ -35,11 +35,45 @@ namespace LogisticsCorp.API.Services
             return new CustomResult<IEnumerable<Employee>>(employees);
         }
 
-        public async Task<CustomResult> Create(EmployeeDto dto)
+        public async Task<CustomResult> Create(User user, Employee employee, string? password = null)
         {
-            var employee = dto.Adapt<Employee>();
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
+            // Create User
+            var createUser = await _userManager.CreateAsync(user, password ?? Constants.DEFAULT_PASSWORD);
+            if (!createUser.Succeeded)
+            {
+                var errors = string.Join(", ", createUser.Errors.Select(e => e.Description));
+                return new(new ErrorResult(errors, ErrorCodes.USER_CREATE_FAILED));
+            }
+
+            // Get new created User
+            var newUser = await _userManager.FindByEmailAsync(user.Email!);
+
+            // Add User to EMPLOYEE role
+            var addToRoleResult = await _userService.AddUserToRole(newUser!.Id, SeedConstants.ROLE_EMPLOYEE_NAME, overwriteExisting: true);
+            if (!addToRoleResult.Succeeded)
+            {
+                await _userManager.DeleteAsync(newUser);
+                return addToRoleResult;
+            }
+
+            // Create Employee linked to the new User
+            employee.UserId = newUser!.Id;
+            employee.User = null!; // Avoid EF Core trying to insert the User again
+            await _context.Employees.AddAsync(employee);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                newUser.AccountId = employee.Id;
+                await _userManager.UpdateAsync(newUser);
+            }
+            catch (Exception)
+            {
+                await _userManager.DeleteAsync(newUser);
+                throw;
+            }
+
             return new CustomResult<Employee>(employee);
         }
 

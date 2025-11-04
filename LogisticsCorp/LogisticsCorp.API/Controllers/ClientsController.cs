@@ -34,6 +34,7 @@ namespace LogisticsCorp.API.Controllers
             var user = dto.User.Adapt<User>();
             user.UserName = user.Email + Guid.NewGuid().ToString();
             var client = dto.Adapt<Client>();
+
             var result = await _service.Create(user, client);
             return ApiResponseFactory.AdaptAndCreateResponse<Client, ClientDto>(result);
         }

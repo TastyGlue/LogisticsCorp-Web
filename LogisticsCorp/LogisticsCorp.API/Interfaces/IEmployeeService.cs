@@ -6,7 +6,7 @@ namespace LogisticsCorp.API.Interfaces
     {
         Task<CustomResult> Get(Guid id);
         Task<CustomResult> GetAll();
-        Task<CustomResult> Create(EmployeeDto employeeDto);
+        Task<CustomResult> Create(User user, Employee employee, string? password = null);
         Task<CustomResult> Update(Guid id, EmployeeDto employeeDto);
         Task<CustomResult> Delete(Guid id);
     }
