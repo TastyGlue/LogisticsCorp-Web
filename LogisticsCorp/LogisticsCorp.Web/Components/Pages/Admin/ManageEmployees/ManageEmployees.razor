@@ -1,0 +1,64 @@
+﻿@page "/manage-employees"
+@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+
+    <MudDataGrid T="EmployeeViewModel"
+                 Items="_employees"
+                 @bind-SelectedItem="_selectedEmployee"
+                 Filterable="true"
+                 FilterMode="DataGridFilterMode.Simple"
+                 QuickFilter="QuickFilter"
+                 Hover="true"
+                 Loading="_isLoading"
+                 Elevation="1"
+                 Class="mb-4">
+
+        <ToolBarContent>
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Add"
+                       OnClick="CreateEmployee">
+                Create
+            </MudButton>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Warning"
+                       StartIcon="@Icons.Material.Filled.Edit"
+                       Disabled="_selectedEmployee == null"
+                       OnClick="EditEmployee"
+                       Class="ml-2">
+                Edit
+            </MudButton>
+
+            <MudSpacer />
+
+            <MudTextField @bind-Value="_searchString"
+                          Placeholder="Search..."
+                          Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          Immediate="true"
+                          Class="ml-2" />
+        </ToolBarContent>
+
+        <Columns>
+            <PropertyColumn Property="x => x.FullName" Title="Full Name" Sortable="true" />
+            <PropertyColumn Property="x => x.Email" Title="Email" Sortable="true" />
+            <PropertyColumn Property="x => x.EmployeeType" Title="Employee Type" Sortable="true" />
+            <PropertyColumn Property="x => x.HireDate" Title="Hire Date" Sortable="true" />
+            <PropertyColumn Property="x => x.Salary" Title="Salary" Sortable="true" />
+            <PropertyColumn Property="x => x.OfficeName" Title="Office" Sortable="true" />
+        </Columns>
+
+        <NoRecordsContent>
+            <MudText>No employees to display.</MudText>
+        </NoRecordsContent>
+
+        <PagerContent>
+            <MudDataGridPager T="EmployeeViewModel" />
+        </PagerContent>
+    </MudDataGrid>
+</MudPaper>
