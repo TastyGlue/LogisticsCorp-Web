@@ -14,6 +14,8 @@ public class Program
 
         builder.RegisterServices();
 
+        MapperConfig.ConfigureMappings();
+
         builder.Services.AddDataProtection()
             .PersistKeysToFileSystem(new DirectoryInfo("/keys"))
             .SetApplicationName("LogisticsCorp.Web");

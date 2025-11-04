@@ -6,6 +6,6 @@ public class ClientDto : AccountDto
     public string City { get; set; } = default!;
     public string PostalCode { get; set; } = default!;
 
-    public ICollection<ShipmentDto>? SentShipments { get; set; } = default!;
-    public ICollection<ShipmentDto>? ReceivedShipments { get; set; } = default!;
+    public ICollection<ShipmentDto>? SentShipments { get; set; } = [];
+    public ICollection<ShipmentDto>? ReceivedShipments { get; set; } = [];
 }

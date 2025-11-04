@@ -6,7 +6,7 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageClients
     {
         [Inject] protected IApiClientService ApiClientService { get; set; } = default!;
 
-        protected List<ClientViewModel> _clients = new();
+        protected List<ClientViewModel> _clients = [];
         protected ClientViewModel? _selectedClient;
         protected string _searchString = string.Empty;
         protected bool _isLoading = true;
