@@ -1,0 +1,85 @@
+﻿@inherits ExtendedComponentBase
+
+@if (IsMobile)
+{
+    <div class="mobile-user-profile">
+        <MudMenu AnchorOrigin="Origin.BottomLeft">
+            <ActivatorContent>
+                <MudAvatar Color="Color.Primary" Size="Size.Small" Class="user-avatar-small">@Initials</MudAvatar>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem Href="/profile">Profile</MudMenuItem>
+                <MudMenuItem OnClick="LogoutHandler">Logout</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </div>
+}
+else
+{
+    <div class="user-profile-section">
+        <div class="user-info">
+            <MudText Typo="Typo.body1" Class="user-name">@FullName</MudText>
+            <MudText Typo="Typo.caption" Class="user-role">@UserRole</MudText>
+        </div>
+        <MudMenu AnchorOrigin="Origin.BottomLeft">
+            <ActivatorContent>
+                <MudAvatar Color="Color.Primary" Size="Size.Medium" Class="user-avatar">@Initials</MudAvatar>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem Href="/profile">Profile</MudMenuItem>
+                <MudMenuItem OnClick="LogoutHandler">Logout</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsMobile { get; set; }
+
+    protected string FullName { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        FullName = UserStateContainer.FullName;
+
+        base.OnInitialized();
+    }
+
+    private string Initials
+    {
+        get
+        {
+            var names = FullName.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+            if (names.Length > 1)
+                return names[0].Substring(0, 1) + names.Last().Substring(0, 1);
+            else
+                return names[0].Substring(0, 1);
+        }
+    }
+
+    private string UserRole
+    {
+        get
+        {
+            var isEmployee = UserStateContainer.Role == SeedConstants.ROLE_EMPLOYEE_NAME;
+            if (isEmployee && UserStateContainer.EmployeeType is not null)
+                return UserStateContainer.EmployeeType switch
+                {
+                    EmployeeType.OfficeStaff => "Office Staff",
+                    EmployeeType.Courier => "Courier",
+                    _ => "Employee"
+                };
+            else
+                return UserStateContainer.Email;
+        }
+    }
+
+    private async Task LogoutHandler()
+    {
+        await LocalStorage.DeleteAsync(Constants.ACCESS_TOKEN_KEY);
+        await LocalStorage.DeleteAsync(Constants.REFRESH_TOKEN_KEY);
+
+        NavigationManager.NavigateTo("account/login", forceLoad: true);
+    }
+}

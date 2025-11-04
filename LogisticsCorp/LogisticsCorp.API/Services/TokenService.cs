@@ -37,6 +37,9 @@ public class TokenService : ITokenService
 
         claims.Add(new Claim(Claims.ACCOUNT_ID, user.AccountId.ToString()!));
 
+        if (user.Account is Employee employee)
+            claims.Add(new Claim(Claims.EMPLOYEE_TYPE, employee.EmployeeType.ToString()));
+
         string token = WriteToken(
             claims: claims, 
             expirationMinutes: _jwtSettings.AccessTokenExpirationMinutes,

@@ -21,6 +21,7 @@ public class AuthService : IAuthService
 
         var user = await _context.Users
             .Include(u => u.Roles)
+            .Include(u => u.Account)
             .FirstOrDefaultAsync(u => u.NormalizedEmail == email.ToUpper());
 
         if (user is null)
@@ -67,6 +68,7 @@ public class AuthService : IAuthService
 
         var user = await _context.Users
             .Include(x => x.Roles)
+            .Include(x => x.Account)
             .FirstOrDefaultAsync(x => x.Id == token.UserId);
 
         if (user == null)

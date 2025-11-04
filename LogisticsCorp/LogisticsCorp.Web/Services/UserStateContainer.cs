@@ -22,4 +22,6 @@ public class UserStateContainer
     public string Role { get; set; } = default!;
 
     public Guid AccountId { get; set; }
+
+    public EmployeeType? EmployeeType { get; set; }
 }

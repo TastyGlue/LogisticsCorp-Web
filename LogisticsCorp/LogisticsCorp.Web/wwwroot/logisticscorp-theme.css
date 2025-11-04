@@ -126,10 +126,6 @@ body {
     border: 1px solid var(--border-color);
 }
 
-.mud-menu {
-    background-color: var(--bg-card) !important;
-}
-
 .mud-menu-item:hover {
     background-color: var(--bg-card-hover) !important;
 }
