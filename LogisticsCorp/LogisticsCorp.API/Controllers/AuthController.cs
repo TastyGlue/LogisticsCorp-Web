@@ -7,10 +7,12 @@ namespace LogisticsCorp.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthService _authService;
+    private readonly IClientService _clientService;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IAuthService authService, IClientService clientService)
     {
         _authService = authService;
+        _clientService = clientService;
     }
 
     /// <summary>
@@ -35,5 +37,33 @@ public class AuthController : ControllerBase
     {
         var result = await _authService.RefreshToken(request.RefreshToken);
         return ApiResponseFactory.CreateResponse<TokensResponse>(result);
+    }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterDto dto)
+    {
+        var user = new User()
+        {
+            UserName = dto.Email + Guid.NewGuid().ToString(),
+            Email = dto.Email,
+            FullName = dto.FullName,
+            IsActive = true
+        };
+
+        var client = new Client()
+        {
+            Address = dto.Address,
+            PostalCode = dto.PostalCode,
+            City = dto.City
+        };
+
+        if (dto.Password != dto.ConfirmPassword)
+        {
+            var error = new CustomResult(new ErrorResult("Passwords do not match", ErrorCodes.VALIDATION_ERROR));
+            return ApiResponseFactory.CreateResponse<object>(error);
+        }
+
+        var result = await _clientService.Create(user, client, dto.Password);
+        return ApiResponseFactory.AdaptAndCreateResponse<Client, ClientDto>(result);
     }
 }

@@ -31,7 +31,9 @@ namespace LogisticsCorp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ClientDto dto)
         {
-            var result = await _service.Create(dto);
+            var user = dto.User.Adapt<User>();
+            var client = dto.Adapt<Client>();
+            var result = await _service.Create(user, client);
             return ApiResponseFactory.AdaptAndCreateResponse<Client, ClientDto>(result);
         }
 
