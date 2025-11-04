@@ -24,6 +24,7 @@ namespace LogisticsCorp.Web.Components.Pages
             if (result.Succeeded)
             {
                 // Store tokens in local storage and go to Home page
+                Model = result.Value;
             }
             else
             {
