@@ -48,6 +48,7 @@ public static class ServiceCollectionExtensions
     {
         builder.Services.AddSingleton<IValidator<LoginModel>, LoginModelValidator>();
         builder.Services.AddSingleton<IValidator<RegisterViewModel>, RegisterViewModelValidator>();
+        builder.Services.AddSingleton<IValidator<ClientViewModel>, ClientViewModelValidator>();
 
         return builder;
     }
