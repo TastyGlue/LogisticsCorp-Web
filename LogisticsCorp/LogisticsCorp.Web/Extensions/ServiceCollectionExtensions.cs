@@ -31,6 +31,7 @@ public static class ServiceCollectionExtensions
         builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
         builder.Services.AddTransient<HttpClientService>();
+        builder.Services.AddTransient<TokenService>();
 
         builder.Services.AddScoped<LoaderService>();
         builder.Services.AddScoped<UserStateContainer>();

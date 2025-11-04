@@ -13,17 +13,21 @@ public class UserService : IUserService
     {
         var user = await _userManager.FindByIdAsync(userId.ToString());
 
+        // Check if User exists
         if (user is null)
             return new (new ErrorResult("User not found", ErrorCodes.ENTITY_NOT_FOUND));
 
+        // Get User Roles
         var roles = await _userManager.GetRolesAsync(user);
 
+        // Check existing roles
         if (!overwriteExisting && roles.Count > 0)
             return new (new ErrorResult(
                 $"User '{user.UserName}' already has a role assigned",
                 ErrorCodes.USER_UPDATE_FAILED
             ));
 
+        // Overwrite existing roles if specified
         if (overwriteExisting && roles.Count > 0)
         {
             var removeResult = await _userManager.RemoveFromRolesAsync(user, roles);
