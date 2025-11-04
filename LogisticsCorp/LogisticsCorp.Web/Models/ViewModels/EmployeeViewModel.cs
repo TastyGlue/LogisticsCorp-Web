@@ -1,6 +1,6 @@
 ﻿namespace LogisticsCorp.Web.Models.ViewModels
 {
-    public class EmployeeViewModel
+    public class EmployeeViewModel : AccountViewModel
     {
         public Guid Id { get; set; }
         public string FullName { get; set; } = string.Empty;

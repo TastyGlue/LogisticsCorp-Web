@@ -1,6 +1,6 @@
 ﻿namespace LogisticsCorp.Web.Models.ViewModels
 {
-    public class ClientViewModel
+    public class ClientViewModel : AccountViewModel
     {
         public Guid Id { get; set; }
         public string FullName { get; set; } = string.Empty;

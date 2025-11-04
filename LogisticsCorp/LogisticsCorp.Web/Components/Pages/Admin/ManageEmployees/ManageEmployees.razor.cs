@@ -1,8 +1,4 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-using LogisticsCorp.Web.Services.ApiServices.Interfaces;
-using LogisticsCorp.Web.Models.ViewModels;
-using Mapster;
-using MudBlazor;
+﻿using LogisticsCorp.Web.Models.ViewModels;
 
 namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
 {
