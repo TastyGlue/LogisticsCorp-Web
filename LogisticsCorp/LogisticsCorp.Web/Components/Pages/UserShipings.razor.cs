@@ -34,7 +34,7 @@ namespace LogisticsCorp.Web.Components.Pages
             {
                 // Store tokens in local storage and go to Home page
                 userShipments = result.Value.ToList();
-                if(userShipments.Count == 0)
+                if(userShipments == null || userShipments.Count == 0)
                 {
                     noShippingsFound = true;
                 }
