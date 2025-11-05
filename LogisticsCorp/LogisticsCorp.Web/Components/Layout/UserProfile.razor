@@ -62,6 +62,10 @@ else
     {
         get
         {
+            var isAdmin = UserStateContainer.Role == SeedConstants.ROLE_ADMIN_NAME;
+            if (isAdmin)
+                return "Administrator";
+
             var isEmployee = UserStateContainer.Role == SeedConstants.ROLE_EMPLOYEE_NAME;
             if (isEmployee && UserStateContainer.EmployeeType is not null)
                 return UserStateContainer.EmployeeType switch

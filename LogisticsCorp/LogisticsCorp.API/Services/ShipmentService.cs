@@ -42,8 +42,7 @@ namespace LogisticsCorp.API.Services
                 .Include(s => s.History)
                 .ToListAsync();
 
-            var shipmentDtos = shipments.Adapt<List<ShipmentDto>>();
-            return new CustomResult<IEnumerable<ShipmentDto>>(shipmentDtos);
+            return new CustomResult<IEnumerable<Shipment>>(shipments);
         }
 
 
