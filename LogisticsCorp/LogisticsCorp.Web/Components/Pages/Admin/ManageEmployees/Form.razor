@@ -1,0 +1,130 @@
+@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<div class="form-container">
+    <MudPaper Class="form-card" Elevation="0">
+        <MudCardContent>
+            <EditForm Model="ViewModel" OnValidSubmit="ValidSubmitHandler">
+                <FluentValidator />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Personal Information</MudText>
+                    <div class="form-grid">
+                        <MudTextField @bind-Value="ViewModel.User.FullName"
+                                      For="@(() => ViewModel.User.FullName)"
+                                      Label="Full Name"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.User.Email"
+                                      For="@(() => ViewModel.User.Email)"
+                                      Label="Email"
+                                      Variant="Variant.Outlined"
+                                      InputType="InputType.Email"
+                                      Disabled="@(!IsCreate)"
+                                      Class="form-field required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.User.PhoneNumber"
+                                      For="@(() => ViewModel.User.PhoneNumber)"
+                                      Label="Phone Number"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+                    </div>
+                </div>
+
+                <MudDivider Class="form-divider" />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Employment Information</MudText>
+                    <div class="form-grid">
+                        <MudSelect @bind-Value="ViewModel.EmployeeType"
+                                   For="@(() => ViewModel.EmployeeType)"
+                                   Label="Employee Type"
+                                   Variant="Variant.Outlined"
+                                   Class="form-field required-field">
+                            <MudSelectItem Value="@(EmployeeType.Courier)">Courier</MudSelectItem>
+                            <MudSelectItem Value="@(EmployeeType.OfficeStaff)">Office Staff</MudSelectItem>
+                        </MudSelect>
+
+                        <MudAutocomplete T="OfficeViewModel"
+                                         Value="ViewModel.Office"
+                                         ValueChanged="SelectedOfficeChanged"
+                                         Label="Office"
+                                         SearchFunc="SearchOffices"
+                                         ToStringFunc="@(args => (args is null) ? "" : args.Name)"
+                                         CoerceText="true"
+                                         Variant="Variant.Outlined"
+                                         Clearable="true"
+                                         ShowProgressIndicator="true">
+                            <ProgressIndicatorTemplate>
+                                <MudProgressLinear Size="Size.Small" Indeterminate="true" Color="@Color.Info" />
+                            </ProgressIndicatorTemplate>
+
+                            <NoItemsTemplate>
+                                <p class="no-content">No data to display</p>
+                            </NoItemsTemplate>
+
+                            <ItemTemplate Context="classObj">
+                                <div class="dropdown-item-container">
+                                    <p class="dropdown-item-title">@classObj.Name</p>
+                                </div>
+                            </ItemTemplate>
+                        </MudAutocomplete>
+
+                        <MudDatePicker Label="yyyy-MM-dd" 
+                                       Editable="true" 
+                                       @bind-Date="ViewModel.HireDate" 
+                                       For="@(() => ViewModel.HireDate)"
+                                       Mask="@(new DateMask("0000-00-00"))" 
+                                       DateFormat="yyyy-MM-dd" 
+                                       Placeholder="ISO Date" 
+                                       Variant="Variant.Outlined" />
+
+                        <MudNumericField @bind-Value="ViewModel.Salary"
+                                         For="@(() => ViewModel.Salary)"
+                                         Label="Salary"
+                                         Variant="Variant.Outlined"
+                                         Format="N2"
+                                         Min="0"
+                                         Step="100"
+                                         Class="form-field" />
+                    </div>
+                </div>
+
+                <MudDivider Class="form-divider" />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Account Status</MudText>
+                    <div class="checkbox-group">
+                        <MudCheckBox @bind-Value="ViewModel.User.IsActive"
+                                     Color="Color.Primary"
+                                     Class="form-checkbox">
+                            <MudText Typo="Typo.body1" Class="checkbox-label">Active Account</MudText>
+                        </MudCheckBox>
+                        <MudText Typo="Typo.body2" Class="checkbox-hint">
+                            Inactive employees cannot log in or access the system
+                        </MudText>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <MudButton OnClick="@CancelHandler"
+                               Variant="Variant.Outlined"
+                               Color="Color.Default"
+                               Size="Size.Large"
+                               Class="action-button">
+                        Cancel
+                    </MudButton>
+                    <MudButton ButtonType="ButtonType.Submit"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Size="Size.Large"
+                               Class="action-button">
+                        @(IsCreate ? "Create Employee" : "Save Changes")
+                    </MudButton>
+                </div>
+            </EditForm>
+        </MudCardContent>
+    </MudPaper>
+</div>
