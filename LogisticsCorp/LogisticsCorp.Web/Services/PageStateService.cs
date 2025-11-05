@@ -6,8 +6,8 @@ namespace LogisticsCorp.Web.Services;
 /// </summary>
 public class PageStateService
 {
-    private string _pageTitle = "Dashboard";
-    private string _pageSubtitle = "Welcome to LogisticsCorp";
+    private string _pageTitle = string.Empty;
+    private string _pageSubtitle = string.Empty;
 
     public string PageTitle
     {
