@@ -11,31 +11,41 @@
     <MudNavLink Href="/dashboard" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Dashboard">
         Dashboard
     </MudNavLink>
-    <MudNavLink Href="/shipment-history" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Inventory">
-        Shipment History
+
+    <MudNavGroup Title="Shipments" Icon="@Icons.Material.Filled.Inventory" Expanded="false">
+        <MudNavLink Href="/shipment-history" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.History">
+            Shipment History
+        </MudNavLink>
+        <MudNavLink Href="/new-shipment" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">
+            New Shipment
+        </MudNavLink>
+        <MudNavLink Href="/company-shipments" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Article">
+            Company Shipments
+        </MudNavLink>
+        <MudNavLink Href="/user-shipings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.PersonOutline">
+            User Shipments
+        </MudNavLink>
+    </MudNavGroup>
+
+    <ExtendedAuthorizeView Roles="[SeedConstants.ROLE_ADMIN_NAME]">
+        <MudNavGroup Title="Management" Icon="@Icons.Material.Filled.AdminPanelSettings" Expanded="false">
+            <MudNavLink Href="/manage-employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Badge">
+                Employees
+            </MudNavLink>
+            <MudNavLink Href="/manage-clients" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">
+                Clients
+            </MudNavLink>
+            <MudNavLink Href="/manage-offices" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Business">
+                Offices
+            </MudNavLink>
+        </MudNavGroup>
+    </ExtendedAuthorizeView>
+
+    <MudNavLink Href="/company" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Info">
+        Company Info
     </MudNavLink>
-    <MudNavLink Href="/new-shipment" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">
-        New Shipment
-    </MudNavLink>
-    <MudNavLink Href="/manage-employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Badge">
-        Employees
-    </MudNavLink>
-    <MudNavLink Href="/manage-clients" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People">
-        Clients
-    </MudNavLink>
-    <MudNavLink Href="/manage-offices" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Business">
-        Offices
-    </MudNavLink>
+
     <MudNavLink Href="/settings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Settings">
         Settings
-    </MudNavLink>
-    <MudNavLink Href="/company" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Business">
-        Contact
-    </MudNavLink>
-    <MudNavLink Href="/company-shipments" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Article">
-        Company Shipments
-    </MudNavLink>
-    <MudNavLink Href="/user-shipings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Article">
-        User Shipments
     </MudNavLink>
 </MudNavMenu>
