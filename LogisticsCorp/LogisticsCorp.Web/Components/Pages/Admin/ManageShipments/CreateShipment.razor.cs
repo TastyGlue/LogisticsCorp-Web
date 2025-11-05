@@ -3,11 +3,25 @@
     public partial class CreateShipment : ExtendedComponentBase
     {
         [Inject] private IApiShipmentService ApiShipmentService { get; set; } = default!;
+        [Inject] private IApiClientService ApiClientService { get; set; } = default!;
 
 
         private ShipmentDto Shipment = new();
 
         private bool IsSaving = false;
+
+        private List<ClientDto> clients = new();
+
+        protected override async Task OnInitializedAsync()
+        {
+            var result = await ApiClientService.GetAll();
+
+            if(result.Succeeded)
+            {
+                clients = result.Value.ToList();
+            }
+        }
+
 
         private async Task SubmitShipment()
         {

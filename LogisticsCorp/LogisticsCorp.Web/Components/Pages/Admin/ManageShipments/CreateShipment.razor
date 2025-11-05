@@ -19,14 +19,26 @@
 
                 <!-- Sender & Recipient -->
                 <MudGrid>
-                    <MudItem xs="12" sm="6">
-                        <MudText Typo="Typo.h6" Color="Color.Primary">Sender</MudText>
-                        <MudTextField @bind-Value="Shipment.SenderId" Label="Sender ID" Variant="Variant.Outlined" Required="true" />
-                    </MudItem>
-                    <MudItem xs="12" sm="6">
-                        <MudText Typo="Typo.h6" Color="Color.Primary">Recipient</MudText>
-                        <MudTextField @bind-Value="Shipment.RecipientId" Label="Recipient ID" Variant="Variant.Outlined" Required="true" />
-                    </MudItem>
+                    @* <MudAutocomplete T="OfficeViewModel"
+                                         Value="ViewModel.Office"
+                                         ValueChanged="SelectedOfficeChanged"
+                                         Label="Office"
+                                         SearchFunc="SearchOffices"
+                                         ToStringFunc="@(args => (args is null) ? "" : args.Name)"
+                                         CoerceText="true"
+                                         Variant="Variant.Outlined"
+                                         Clearable="true"
+                                         ShowProgressIndicator="true">
+                    <MudAutocomplete T="OfficeViewModel"
+                                         Value="ViewModel.Office"
+                                         ValueChanged="SelectedOfficeChanged"
+                                         Label="Office"
+                                         SearchFunc="SearchOffices"
+                                         ToStringFunc="@(args => (args is null) ? "" : args.Name)"
+                                         CoerceText="true"
+                                         Variant="Variant.Outlined"
+                                         Clearable="true"
+                                         ShowProgressIndicator="true">  *@
                 </MudGrid>
 
                 <!-- Delivery Details -->
