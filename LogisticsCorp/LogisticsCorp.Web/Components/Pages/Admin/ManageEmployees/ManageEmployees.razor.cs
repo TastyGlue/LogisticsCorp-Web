@@ -35,9 +35,7 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
         }
 
         protected void CreateEmployee()
-        {
-            // Placeholder for future Create form navigation
-        }
+            => NavigationManager.NavigateTo("/manage-clients/create");
 
         protected void EditEmployee()
         {

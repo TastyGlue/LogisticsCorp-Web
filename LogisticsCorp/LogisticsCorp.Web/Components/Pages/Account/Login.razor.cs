@@ -27,7 +27,7 @@ public partial class Login : ExtendedComponentBase
             await LocalStorage.SetAsync(Constants.ACCESS_TOKEN_KEY, tokens.AccessToken);
             await LocalStorage.SetAsync(Constants.REFRESH_TOKEN_KEY, tokens.RefreshToken);
 
-            NavigationManager.NavigateTo("/", true);
+            NavigationManager.NavigateTo("/dashboard", true);
         }
         else
         {
