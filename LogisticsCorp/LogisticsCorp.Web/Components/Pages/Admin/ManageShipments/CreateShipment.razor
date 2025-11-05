@@ -1,0 +1,109 @@
+﻿@page "/manage-shipments/create"
+@inherits ExtendedComponentBase
+
+@inject HttpClient Http
+@inject ISnackbar Snackbar
+
+<PageTitle>Create Shipment</PageTitle>
+
+<MudContainer Class="mt-8 mb-8">
+    <MudPaper Elevation="4" Class="p-6 rounded-xl bg-grey-lighten-4">
+
+        <MudText Typo="Typo.h4" Class="mb-6 text-primary font-semibold">
+            Create New Shipment
+        </MudText>
+
+        <EditForm Model="@Shipment" OnValidSubmit="@SubmitShipment">
+            <DataAnnotationsValidator />
+            <MudStack Spacing="4">
+
+                <!-- Sender & Recipient -->
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudText Typo="Typo.h6" Color="Color.Primary">Sender</MudText>
+                        <MudTextField @bind-Value="Shipment.SenderId" Label="Sender ID" Variant="Variant.Outlined" Required="true" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudText Typo="Typo.h6" Color="Color.Primary">Recipient</MudText>
+                        <MudTextField @bind-Value="Shipment.RecipientId" Label="Recipient ID" Variant="Variant.Outlined" Required="true" />
+                    </MudItem>
+                </MudGrid>
+
+                <!-- Delivery Details -->
+                <MudDivider Class="my-2" />
+                <MudText Typo="Typo.h6" Color="Color.Primary">Delivery Information</MudText>
+
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudSelect T="DeliveryType" Label="Delivery Type" @bind-Value="Shipment.DeliveryType" Variant="Variant.Outlined">
+                            <MudSelectItem Value="DeliveryType.ToAddress">Standard</MudSelectItem>
+                            <MudSelectItem Value="DeliveryType.ToOffice">Express</MudSelectItem>
+                        </MudSelect>
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.DeliveryAddress" Label="Delivery Address" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.DeliveryCity" Label="City" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.DeliveryPostalCode" Label="Postal Code" Variant="Variant.Outlined" />
+                    </MudItem>
+                </MudGrid>
+
+                <!-- Shipment Details -->
+                <MudDivider Class="my-2" />
+                <MudText Typo="Typo.h6" Color="Color.Primary">Shipment Details</MudText>
+
+                <MudGrid>
+                    <MudItem xs="12" sm="4">
+                        <MudTextField T="decimal" @bind-Value="Shipment.Weight" Label="Weight (kg)" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="Shipment.Description" Label="Description" Variant="Variant.Outlined" Lines="3" />
+                    </MudItem>
+                </MudGrid>
+
+                <!-- Office and Employee Info -->
+                <MudDivider Class="my-2" />
+                <MudText Typo="Typo.h6" Color="Color.Primary">Logistics</MudText>
+
+                <MudGrid>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.RegisteredByEmployeeId" Label="Registered By (Employee ID)" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.CourierId" Label="Courier ID (optional)" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.OriginOfficeId" Label="Origin Office ID" Variant="Variant.Outlined" />
+                    </MudItem>
+                    <MudItem xs="12" sm="6">
+                        <MudTextField @bind-Value="Shipment.DestinationOfficeId" Label="Destination Office ID" Variant="Variant.Outlined" />
+                    </MudItem>
+                </MudGrid>
+
+                <!-- Submit Button -->
+                <MudStack Row="true" Justify="Justify.FlexEnd">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" ButtonType="ButtonType.Submit" Disabled="@IsSaving">
+                        @if (IsSaving)
+                                                {
+                        <MudProgressCircular Indeterminate="true" Size="Size.Small" Class="mr-2" />
+                        <span>Creating...</span>
+                                                }
+                                                else
+                        {
+                            <MudIcon Icon="@Icons.Material.Filled.LocalShipping" Class="mr-2" />
+                            <span>Create Shipment</span>
+                        }
+                    </MudButton>
+                </MudStack>
+            </MudStack>
+        </EditForm>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    
+}
