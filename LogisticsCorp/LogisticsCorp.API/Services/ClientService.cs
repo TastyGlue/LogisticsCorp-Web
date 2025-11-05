@@ -58,15 +58,6 @@
                 return addToRoleResult;
             }
 
-            // Set new User's password
-            var token = await _userManager.GeneratePasswordResetTokenAsync(newUser!);
-            var resetResult = await _userManager.ResetPasswordAsync(newUser!, token, password ?? Constants.DEFAULT_PASSWORD);
-            if (!resetResult.Succeeded)
-            {
-                var errors = string.Join(", ", resetResult.Errors.Select(e => e.Description));
-                Log.Error($"Failed to reset password for user '{user.UserName}': {errors}");
-            }
-
             // Create Client linked to the new User
             client.UserId = newUser!.Id;
             client.User = null!; // Avoid EF Core trying to insert the User again

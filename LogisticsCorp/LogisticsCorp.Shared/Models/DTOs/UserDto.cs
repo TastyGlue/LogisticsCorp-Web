@@ -6,6 +6,8 @@ public class UserDto
 
     public string Email { get; set; } = default!;
 
+    public string? PhoneNumber { get; set; }
+
     public bool IsActive { get; set; }
 
     public Guid? AccountId { get; set; }

@@ -6,6 +6,11 @@
 
         protected ClientViewModel ViewModel { get; set; } = new() { User = new() };
 
+        protected override void OnInitialized()
+        {
+            PageStateService.SetPageInfo("Create Client", "Add a new client to the system");
+        }
+
         protected async Task ValidSubmitHandler()
         {
             var dto = ViewModel.Adapt<ClientDto>();

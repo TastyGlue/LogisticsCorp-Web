@@ -2,26 +2,95 @@
 
 <PageTitle>@PageTitle</PageTitle>
 
-<MudPaper Class="form-paper">
-    <MudText Typo="Typo.h5" Class="mb-4">@PageTitle</MudText>
+<div class="form-container">
+    <MudPaper Class="form-card" Elevation="0">
+        <MudCardContent>
+            <EditForm Model="ViewModel" OnValidSubmit="ValidSubmitHandler">
+                <FluentValidator />
 
-    <MudForm @ref="FormRef" Class="custom-form">
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Personal Information</MudText>
+                    <div class="form-grid">
+                        <MudTextField @bind-Value="ViewModel.User.FullName"
+                                      For="@(() => ViewModel.User.FullName)"
+                                      Label="Full Name"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
 
-        <MudTextField @bind-Value="ViewModel.User.FullName" Label="First Name" Required="true" />
-        <MudTextField @bind-Value="ViewModel.User.Email" Label="Email" Required="true" />
-        <MudTextField @bind-Value="ViewModel.PhoneNumber" Label="Phone Number" Required="true" />
-        <MudTextField @bind-Value="ViewModel.Address" Label="Address" />
-        <MudTextField @bind-Value="ViewModel.City" Label="City" />
-        <MudTextField @bind-Value="ViewModel.PostalCode" Label="Postal Code" />
+                        <MudTextField @bind-Value="ViewModel.User.Email"
+                                      For="@(() => ViewModel.User.Email)"
+                                      Label="Email"
+                                      Variant="Variant.Outlined"
+                                      InputType="InputType.Email"
+                                      Disabled="@(!IsCreate)"
+                                      Class="form-field required-field" />
 
-        <MudInputLabel>@("Is Active")</MudInputLabel>
-        <MudCheckBox @bind-Value="ViewModel.User.IsActive" Color="Color.Primary" />
+                        <MudTextField @bind-Value="ViewModel.User.PhoneNumber"
+                                      For="@(() => ViewModel.User.PhoneNumber)"
+                                      Label="Phone Number"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+                    </div>
+                </div>
 
-        <MudButton OnClick="@SubmitHandler" Variant="Variant.Filled" Color="Color.Primary" Class="mt-4">
-            Submit
-        </MudButton>
-        <MudButton OnClick="@CancelHandler" Variant="Variant.Text" Class="mt-4 ml-2">
-            Cancel
-        </MudButton>
-    </MudForm>
-</MudPaper>
+                <MudDivider Class="form-divider" />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Address Information</MudText>
+                    <div class="form-grid">
+                        <MudTextField @bind-Value="ViewModel.Address"
+                                      For="@(() => ViewModel.Address)"
+                                      Label="Address"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field full-width required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.City"
+                                      For="@(() => ViewModel.City)"
+                                      Label="City"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.PostalCode"
+                                      For="@(() => ViewModel.PostalCode)"
+                                      Label="Postal Code"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+                    </div>
+                </div>
+
+                <MudDivider Class="form-divider" />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Account Status</MudText>
+                    <div class="checkbox-group">
+                        <MudCheckBox @bind-Value="ViewModel.User.IsActive"
+                                     Color="Color.Primary"
+                                     Class="form-checkbox">
+                            <MudText Typo="Typo.body1" Class="checkbox-label">Active Account</MudText>
+                        </MudCheckBox>
+                        <MudText Typo="Typo.body2" Class="checkbox-hint">
+                            Inactive clients cannot log in or access the system
+                        </MudText>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <MudButton OnClick="@CancelHandler"
+                               Variant="Variant.Outlined"
+                               Color="Color.Default"
+                               Size="Size.Large"
+                               Class="action-button">
+                        Cancel
+                    </MudButton>
+                    <MudButton ButtonType="ButtonType.Submit"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Size="Size.Large"
+                               Class="action-button">
+                        @(IsCreate ? "Create Client" : "Save Changes")
+                    </MudButton>
+                </div>
+            </EditForm>
+        </MudCardContent>
+    </MudPaper>
+</div>
