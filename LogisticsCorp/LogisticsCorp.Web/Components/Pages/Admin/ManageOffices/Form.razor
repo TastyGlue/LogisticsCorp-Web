@@ -1,0 +1,88 @@
+﻿@inherits ExtendedComponentBase
+
+<PageTitle>@PageTitle</PageTitle>
+
+<div class="form-container">
+    <MudPaper Class="form-card" Elevation="0">
+        <MudCardContent>
+            <EditForm Model="ViewModel" OnValidSubmit="ValidSubmitHandler">
+                <FluentValidator />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Office Information</MudText>
+                    <div class="form-grid">
+                        <MudTextField @bind-Value="ViewModel.Name"
+                                      For="@(() => ViewModel.Name)"
+                                      Label="Office Name"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.Address"
+                                      For="@(() => ViewModel.Address)"
+                                      Label="Address"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field full-width required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.City"
+                                      For="@(() => ViewModel.City)"
+                                      Label="City"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field required-field" />
+
+                        <MudTextField @bind-Value="ViewModel.PostalCode"
+                                      For="@(() => ViewModel.PostalCode)"
+                                      Label="Postal Code"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field" />
+
+                        <MudTextField @bind-Value="ViewModel.PhoneNumber"
+                                      For="@(() => ViewModel.PhoneNumber)"
+                                      Label="Phone Number"
+                                      Variant="Variant.Outlined"
+                                      Class="form-field" />
+
+                        <MudTextField @bind-Value="ViewModel.Email"
+                                      For="@(() => ViewModel.Email)"
+                                      Label="Email"
+                                      Variant="Variant.Outlined"
+                                      InputType="InputType.Email"
+                                      Class="form-field" />
+                    </div>
+                </div>
+
+                <MudDivider Class="form-divider" />
+
+                <div class="form-section">
+                    <MudText Typo="Typo.h6" Class="section-title">Settings</MudText>
+                    <div class="checkbox-group">
+                        <MudCheckBox @bind-Value="ViewModel.IsActive"
+                                     Color="Color.Primary"
+                                     Class="form-checkbox">
+                            <MudText Typo="Typo.body1" Class="checkbox-label">Active Office</MudText>
+                        </MudCheckBox>
+                        <MudText Typo="Typo.body2" Class="checkbox-hint">
+                            Inactive offices will be hidden from selection lists
+                        </MudText>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <MudButton OnClick="@CancelHandler"
+                               Variant="Variant.Outlined"
+                               Color="Color.Default"
+                               Size="Size.Large"
+                               Class="action-button">
+                        Cancel
+                    </MudButton>
+                    <MudButton ButtonType="ButtonType.Submit"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               Size="Size.Large"
+                               Class="action-button">
+                        @(IsCreate ? "Create Office" : "Save Changes")
+                    </MudButton>
+                </div>
+            </EditForm>
+        </MudCardContent>
+    </MudPaper>
+</div>
