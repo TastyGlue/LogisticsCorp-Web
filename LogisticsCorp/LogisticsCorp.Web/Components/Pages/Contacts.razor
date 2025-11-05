@@ -1,0 +1,71 @@
+﻿@page "/contacts"
+@inherits ExtendedComponentBase
+@using MudBlazor
+
+<PageTitle>Company Information</PageTitle>
+
+<MudContainer Class="mt-10 mb-10">
+    @if (Company is null)
+        {
+    <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Class="my-10">
+        <MudProgressCircular Indeterminate="true" Color="Color.Primary" Size="Size.Medium" />
+        <MudText Typo="Typo.h6" Class="mt-4">Loading company information...</MudText>
+    </MudStack>
+        }
+        else
+    {
+        <MudPaper Elevation="4" Class="p-6 rounded-2xl bg-grey-lighten-4">
+            <MudStack Spacing="3">
+                <!-- Header Section -->
+                <MudStack AlignItems="AlignItems.Center" Class="text-center mb-6">
+                    <MudAvatar Icon="@Icons.Material.Filled.Business" Color="Color.Primary" Size="Size.Large" />
+                    <MudText Typo="Typo.h4" Class="mt-2 text-primary font-semibold">
+                        Company Information
+                    </MudText>
+                </MudStack>
+
+                <!-- Contact Info -->
+                <MudPaper Elevation="0" Class="p-4 rounded-lg bg-grey-lighten-5">
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-2 font-medium">
+                        Contact Details
+                    </MudText>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6">
+                            <MudText><b>📞 Phone:</b> @Company.Phone</MudText>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <MudText><b>📧 Email:</b> @Company.Email</MudText>
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudText><b>📍 Address:</b> @Company.Adress</MudText>
+                        </MudItem>
+                    </MudGrid>
+                </MudPaper>
+
+                <!-- Divider -->
+                <MudDivider Class="my-4" />
+
+                <!-- Schedule Table -->
+                <MudPaper Elevation="0" Class="p-4 rounded-lg bg-grey-lighten-5">
+                    <MudText Typo="Typo.h6" Color="Color.Primary" >
+                        Weekly Schedule
+                    </MudText>
+
+                    <MudTable Items="ScheduleList" Dense="true" Bordered="true" Hover="true" Elevation="0" Class="rounded-md">
+                        <HeaderContent>
+                            <MudTh><b>Day</b></MudTh>
+                            <MudTh><b>Hours</b></MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd DataLabel="Day">@context.Day</MudTd>
+                            <MudTd DataLabel="Hours">@context.Hours</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+
+                </MudPaper>
+            </MudStack>
+        </MudPaper>
+    }
+</MudContainer>
+
+
