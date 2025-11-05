@@ -6,6 +6,5 @@ public class EmployeeDto : AccountDto
     public EmployeeType EmployeeType { get; set; }
     public DateTime HireDate { get; set; }
     public decimal? Salary { get; set; }
-
     public OfficeDto? Office { get; set; } = default!;
 }

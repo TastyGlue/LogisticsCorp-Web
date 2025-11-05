@@ -1,6 +1,4 @@
-﻿using LogisticsCorp.Shared.Models.DTOs;
-
-namespace LogisticsCorp.Web.Models.ViewModels
+﻿namespace LogisticsCorp.Web.Models.ViewModels
 {
     public class AccountViewModel
     {

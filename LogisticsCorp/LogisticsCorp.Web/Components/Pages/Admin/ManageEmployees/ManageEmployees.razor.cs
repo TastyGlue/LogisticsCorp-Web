@@ -1,6 +1,4 @@
-﻿using LogisticsCorp.Web.Models.ViewModels;
-
-namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
+﻿namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
 {
     public partial class ManageEmployees : ExtendedComponentBase
     {
@@ -35,7 +33,7 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
         }
 
         protected void CreateEmployee()
-            => NavigationManager.NavigateTo("/manage-clients/create");
+            => NavigationManager.NavigateTo("/manage-employees/create");
 
         protected void EditEmployee()
         {
@@ -48,9 +46,7 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageEmployees
                 return true;
 
             return (employee.User.FullName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (employee.User.Email?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (employee.EmployeeType?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
-                || (employee.OfficeName?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
+                || (employee.User.Email?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
         }
     }
 }
