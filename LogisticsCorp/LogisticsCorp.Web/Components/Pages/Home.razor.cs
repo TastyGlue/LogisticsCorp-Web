@@ -2,8 +2,10 @@ namespace LogisticsCorp.Web.Components.Pages;
 
 public partial class Home : ExtendedComponentBase
 {
-    protected override void OnInitialized()
+    private bool _drawerOpen = false;
+
+    private void ToggleDrawer()
     {
-        
+        _drawerOpen = !_drawerOpen;
     }
 }

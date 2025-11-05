@@ -33,7 +33,8 @@ namespace LogisticsCorp.Web.Components.Pages.Admin.ManageOffices
             _isLoading = false;
         }
 
-        protected void CreateOffice() { }
+        protected void CreateOffice()
+            => NavigationManager.NavigateTo("/manage-offices/create");
         protected void EditOffice() { }
 
         private bool QuickFilter(OfficeViewModel office)
